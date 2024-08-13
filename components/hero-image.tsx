@@ -3,7 +3,7 @@ import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
 import { HOME_QUERY } from '@/sanity/lib/queries'
 import { HOME_QUERYResult } from '@/sanity.types'
-import { getImageDimensions } from '@sanity/asset-utils'
+
 import { PortableText } from 'next-sanity'
 
 export default async function HeroImage() {

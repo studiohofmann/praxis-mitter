@@ -28,6 +28,17 @@ const kontakt = {
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: "ueberschriftAnfahrt",
+            title: "Überschrift Anfahrt",
+            type: "string",
+        }),
+        defineField({
+            name: "textAnfahrt",
+            title: "Text Anfahrt",
+            type: "array",
+            of: [{ type: "block" }],
+        }),
     ],
 };
 

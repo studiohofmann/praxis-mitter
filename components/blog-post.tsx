@@ -36,15 +36,28 @@ export default async function BlogPost() {
                                     height={getImageDimensions(post.bild).height}
                                     placeholder="blur"
                                     blurDataURL={urlFor(post.bild).width(24).height(24).blur(10).url()}
-                                    sizes="
-            (max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            40vw"
+                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
                                 />
-                                <PortableText value={post.text} />
+                                <div className='px-3 py-6'>
+                                    <PortableText value={post.text} />
+                                </div>
                             </CardContent>
-                            <CardFooter>
-                                <p>Card Footer</p>
+                            <CardFooter className='flex gap-3 px-3 pb-6'>
+                                <h3>von {post.autor.user.name}</h3>
+                                <div className='rounded-full w-6'>
+                                    <Image
+                                        className='rounded-full'
+                                        src={urlFor(post.autor.user.bild).url()}
+                                        alt="hello"
+                                        width={getImageDimensions(post.autor.user.bild).width}
+                                        height={getImageDimensions(post.autor.user.bild).height}
+                                        placeholder="blur"
+                                        blurDataURL={urlFor(post.autor.user.bild).width(24).height(24).blur(10).url()}
+                                        sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
+
+                                    />
+                                </div>
+
                             </CardFooter>
                         </Card>
                     </li>

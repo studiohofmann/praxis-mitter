@@ -2,6 +2,7 @@ import { client } from '@/sanity/lib/client'
 import { KONTAKT_QUERY } from '@/sanity/lib/queries'
 import { KONTAKT_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
+import Anfahrt from '@/components/anfahrt'
 
 
 
@@ -16,6 +17,7 @@ export default async function Kontakt() {
                     <PortableText value={willkommen.text} />
                 </div>
             ))}
+            <Anfahrt />
         </div>
     );
 }

@@ -7,16 +7,16 @@ export default async function SchwerpunktePost() {
     const schwerpunktePost = await client.fetch<SCHWERPUNKTE_POST_QUERYResult>(SCHWERPUNKTE_POST_QUERY)
 
     return (
-        <main className="">
-            {schwerpunktePost.map((willkommen) => (
-                <div key={willkommen._id}>
-                    {willkommen.ueberschrift}
-                    <PortableText value={willkommen.text} />
+        <div className="">
+            {schwerpunktePost.map((schwerpunkte) => (
+                <div key={schwerpunkte._id}>
+                    <h2 className='pb-3'>{schwerpunkte.ueberschrift}</h2>
+                    <PortableText value={schwerpunkte.text} />
                 </div>
             ))}
 
 
 
-        </main>
+        </div>
     );
 }

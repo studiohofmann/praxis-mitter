@@ -17,10 +17,10 @@ export default async function Menue() {
             {menue.map((post) => (
                 <div key={post._id}>
                     <div>
-                        <div className="flex justify-between px-3 py-2 bg-red-200">
+                        <div className="flex justify-between px-3 py-2 bg-white">
 
                             <Link href="/" className='flex items-center'>
-                                Praxis Mitter
+                                <h2>Praxis Mitter</h2>
                             </Link>
 
 

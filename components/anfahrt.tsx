@@ -1,21 +1,21 @@
 import { client } from '@/sanity/lib/client'
-import { HOME_QUERY } from '@/sanity/lib/queries'
-import { HOME_QUERYResult } from '@/sanity.types'
+import { KONTAKT_QUERY } from '@/sanity/lib/queries'
+import { KONTAKT_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
 
-export default async function Anfahrt() {
-    const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
 
+
+export default async function Anfahrt() {
+    const kontakt = await client.fetch<KONTAKT_QUERYResult>(KONTAKT_QUERY)
     return (
-        <main className="px-3 py-12">
-            {home.map((willkommen) => (
-                <div key={willkommen._id}>
-                    <PortableText value={willkommen.text} />
+        <div className="">
+            {kontakt.map((anfahrt) => (
+                <div key={anfahrt._id}>
+                    <h1 className='pt-12'>{anfahrt.ueberschriftAnfahrt}</h1>
+                    <br />
+                    <PortableText value={anfahrt.textAnfahrt} />
                 </div>
             ))}
-
-
-
-        </main>
+        </div>
     );
 }

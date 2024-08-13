@@ -38,6 +38,19 @@ const blogPost = {
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: 'autor',
+            title: "Autor",
+            type: 'object',
+            fields: [
+                {
+                    title: 'User',
+                    name: 'user',
+                    type: 'reference',
+                    to: [{ type: 'user' }]
+                }
+            ]
+        }),
     ],
 };
 

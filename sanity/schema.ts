@@ -9,7 +9,8 @@ import kontakt from './schemas/kontakt'
 import leistungen from './schemas/leistungen'
 import leistungenPost from './schemas/leistungen-post'
 import menue from './schemas/menue'
+import user from './schemas/user'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blog, blogPost, home, kontakt, leistungen, leistungenPost, menue, schwerpunkte, schwerpunktePost, uebermich,],
+  types: [blog, blogPost, home, kontakt, leistungen, leistungenPost, menue, schwerpunkte, schwerpunktePost, uebermich, user],
 }

@@ -10,13 +10,14 @@ import Image from 'next/image'
 export default async function Uebermich() {
     const ueberMich = await client.fetch<UEBER_MICH_QUERYResult>(UEBER_MICH_QUERY)
     return (
-        <div className="">
+        <div className="px-3">
             {ueberMich.map((willkommen) => (
                 <div key={willkommen._id}>
-                    <h1>{willkommen.ueberschriftNavigation}</h1>
+                    <h1 className='pt-12'>{willkommen.ueberschriftNavigation}</h1>
+                    <br />
                     <div className='relative h-96'>
                         <Image
-                            className=''
+                            className='pb-6'
                             src={urlFor(willkommen.bild).url()}
                             alt="image"
                             fill
