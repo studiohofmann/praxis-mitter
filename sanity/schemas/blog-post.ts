@@ -10,18 +10,18 @@ const blogPost = {
 
     fields: [
         defineField({
-            name: "header",
-            title: "Header",
+            name: "ueberschrift",
+            title: "Überschrift",
             type: "string",
         }),
         {
-            name: 'date',
-            title: 'Date',
+            name: 'datum',
+            title: 'Datum',
             type: 'date'
         },
         defineField({
-            name: "image",
-            title: "Image",
+            name: "bild",
+            title: "Bild",
             type: "image",
             options: { hotspot: true },
             fields: [

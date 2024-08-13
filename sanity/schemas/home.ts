@@ -8,20 +8,20 @@ const home = {
     icon: HomeIcon,
 
     fields: [
+
         defineField({
-            name: 'heroImage',
-            title: 'Hero Image',
+            name: "seite",
+            title: "Seite",
+            type: "string",
+        }),
+        defineField({
+            name: 'logo',
+            title: 'Logo',
             type: 'image',
             options: {
                 hotspot: true // <-- Defaults to false
             },
             fields: [
-                {
-                    name: "caption",
-                    title: "Caption",
-                    type: "array",
-                    of: [{ type: "block" }],
-                },
                 {
                     name: "alt",
                     title: "Alt",
@@ -29,11 +29,27 @@ const home = {
                 },
             ]
         }),
-
         defineField({
-            name: "header",
-            title: "Header",
-            type: "string",
+            name: 'bild',
+            title: 'Bild',
+            type: 'image',
+            options: {
+                hotspot: true // <-- Defaults to false
+            },
+            fields: [
+                {
+                    name: "alt",
+                    title: "Alt",
+                    type: "string",
+                },
+                {
+                    name: "caption",
+                    title: "Caption",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+
+            ]
         }),
         defineField({
             name: "text",

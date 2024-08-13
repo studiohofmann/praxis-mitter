@@ -1,29 +1,22 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { client } from '@/sanity/lib/client'
+import { HOME_QUERY } from '@/sanity/lib/queries'
+import { HOME_QUERYResult } from '@/sanity.types'
+import HeroImage from '@/components/hero-image'
+import Willkommen from '@/components/willkommen'
+import Leistungen from '@/components/leistungen'
+import LeistungenPost from '@/components/leistungen-post'
 
 
-
-export default function Home() {
+export default async function Home() {
+  const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
   return (
-    <main className="pt-64">
-      <Card>
-        <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter>
-      </Card>
+    <main className="">
+      <Willkommen />
+      <HeroImage />
+      <Leistungen />
+      <LeistungenPost />
     </main>
   );
 }
+
+export const revalidate = 60;

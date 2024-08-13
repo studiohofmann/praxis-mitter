@@ -1,0 +1,21 @@
+import { client } from '@/sanity/lib/client'
+import { HOME_QUERY } from '@/sanity/lib/queries'
+import { HOME_QUERYResult } from '@/sanity.types'
+import { PortableText } from 'next-sanity'
+
+export default async function Anfahrt() {
+    const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
+
+    return (
+        <main className="px-3 py-12">
+            {home.map((willkommen) => (
+                <div key={willkommen._id}>
+                    <PortableText value={willkommen.text} />
+                </div>
+            ))}
+
+
+
+        </main>
+    );
+}
