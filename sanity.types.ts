@@ -526,7 +526,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Query: *[_type == "blog"]{_id, ueberschriftNavigation, text}
 export type BLOG_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | null;
+  ueberschriftNavigation: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -550,8 +550,8 @@ export type BLOG_QUERYResult = Array<{
 // Query: *[_type == "blogPost"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}
 export type BLOG_POST_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | null;
-  datum: string | null;
+  ueberschrift: string | any;
+  datum: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -585,7 +585,7 @@ export type BLOG_POST_QUERYResult = Array<{
   autor: {
     user: {
       _id: string;
-      name: string | null;
+      name: string | any;
       bild: {
         asset?: {
           _ref: string;
@@ -605,7 +605,7 @@ export type BLOG_POST_QUERYResult = Array<{
 // Query: *[_type == "home"] {_id, seite, bild, logo, text}
 export type HOME_QUERYResult = Array<{
   _id: string;
-  seite: string | null;
+  seite: string | any;
   bild: {
     asset?: {
       _ref: string;
@@ -671,7 +671,7 @@ export type HOME_QUERYResult = Array<{
 // Query: *[_type == "kontakt"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}
 export type KONTAKT_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | null;
+  ueberschriftNavigation: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -690,7 +690,7 @@ export type KONTAKT_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | any;
-  ueberschriftAnfahrt: string | null;
+  ueberschriftAnfahrt: string | any;
   textAnfahrt: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -714,7 +714,7 @@ export type KONTAKT_QUERYResult = Array<{
 // Query: *[_type == "leistungen"] {_id, ueberschrift, text}
 export type LEISTUNGEN_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | null;
+  ueberschrift: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -738,7 +738,7 @@ export type LEISTUNGEN_QUERYResult = Array<{
 // Query: *[_type == "leistungenPost"] {_id, ueberschrift, text}
 export type LEISTUNGEN_POST_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | null;
+  ueberschrift: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -785,18 +785,18 @@ export type MENUE_QUERYResult = Array<{
 // Query: *[defined(ueberschriftNavigation) && defined(slug)]{_id, ueberschriftNavigation, "slug": slug.current,}
 export type NAVIGATION_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: null;
-  slug: null;
+  ueberschriftNavigation: any;
+  slug: any;
 } | {
   _id: string;
-  ueberschriftNavigation: string | null;
-  slug: string | null;
+  ueberschriftNavigation: string | any;
+  slug: string | any;
 }>;
 // Variable: SCHWERPUNKTE_QUERY
 // Query: *[_type == "schwerpunkte"] {_id, ueberschriftNavigation, text}
 export type SCHWERPUNKTE_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | null;
+  ueberschriftNavigation: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -820,7 +820,7 @@ export type SCHWERPUNKTE_QUERYResult = Array<{
 // Query: *[_type == "schwerpunktePost"] {_id, ueberschrift, text}
 export type SCHWERPUNKTE_POST_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | null;
+  ueberschrift: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -844,7 +844,7 @@ export type SCHWERPUNKTE_POST_QUERYResult = Array<{
 // Query: *[_type == "uebermich"] {_id, ueberschriftNavigation, bild, text}
 export type UEBER_MICH_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | null;
+  ueberschriftNavigation: string | any;
   bild: {
     asset?: {
       _ref: string;
