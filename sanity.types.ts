@@ -597,8 +597,8 @@ export type BLOG_POST_QUERYResult = Array<{
         crop?: SanityImageCrop;
         alt?: string;
         _type: "image";
-      } | null;
-    } | null;
+      } | any;
+    } | any;
   } | any;
 }>;
 // Variable: HOME_QUERY
@@ -635,7 +635,7 @@ export type HOME_QUERYResult = Array<{
       _key: string;
     }>;
     _type: "image";
-  } | null;
+  } | any;
   logo: {
     asset?: {
       _ref: string;
@@ -647,7 +647,7 @@ export type HOME_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
+  } | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
