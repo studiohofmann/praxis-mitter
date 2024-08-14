@@ -544,7 +544,7 @@ export type BLOG_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: BLOG_POST_QUERY
 // Query: *[_type == "blogPost"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}
@@ -569,7 +569,7 @@ export type BLOG_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
   bild: {
     asset?: {
       _ref: string;
@@ -581,7 +581,7 @@ export type BLOG_POST_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
+  } | any;
   autor: {
     user: {
       _id: string;
@@ -599,7 +599,7 @@ export type BLOG_POST_QUERYResult = Array<{
         _type: "image";
       } | null;
     } | null;
-  } | null;
+  } | any;
 }>;
 // Variable: HOME_QUERY
 // Query: *[_type == "home"] {_id, seite, bild, logo, text}
@@ -665,7 +665,7 @@ export type HOME_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: KONTAKT_QUERY
 // Query: *[_type == "kontakt"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}
@@ -689,7 +689,7 @@ export type KONTAKT_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
   ueberschriftAnfahrt: string | null;
   textAnfahrt: Array<{
     children?: Array<{
@@ -708,7 +708,7 @@ export type KONTAKT_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: LEISTUNGEN_QUERY
 // Query: *[_type == "leistungen"] {_id, ueberschrift, text}
@@ -732,7 +732,7 @@ export type LEISTUNGEN_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: LEISTUNGEN_POST_QUERY
 // Query: *[_type == "leistungenPost"] {_id, ueberschrift, text}
@@ -756,7 +756,7 @@ export type LEISTUNGEN_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: MENUE_QUERY
 // Query: *[_type == "menue"] {_id, termin}
@@ -779,7 +779,7 @@ export type MENUE_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: NAVIGATION_QUERY
 // Query: *[defined(ueberschriftNavigation) && defined(slug)]{_id, ueberschriftNavigation, "slug": slug.current,}
@@ -814,7 +814,7 @@ export type SCHWERPUNKTE_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: SCHWERPUNKTE_POST_QUERY
 // Query: *[_type == "schwerpunktePost"] {_id, ueberschrift, text}
@@ -838,7 +838,7 @@ export type SCHWERPUNKTE_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
 // Variable: UEBER_MICH_QUERY
 // Query: *[_type == "uebermich"] {_id, ueberschriftNavigation, bild, text}
@@ -874,5 +874,6 @@ export type UEBER_MICH_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
+  }> | any;
 }>;
+
