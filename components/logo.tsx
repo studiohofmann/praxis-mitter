@@ -7,7 +7,7 @@ export default function Logo() {
             x={0}
             y={0}
             style={{
-                enableBackground: "new 0 0 548.5 343.1",
+
             }}
             viewBox="0 0 548.5 343.1"
         >
