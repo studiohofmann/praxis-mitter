@@ -12,7 +12,7 @@ export default async function LeistungenPost() {
         <div className="px-3 pb-12">
 
             {leistungenPost.map((post) => (
-                <div key={post._id}>
+                <div key={post._id} className=''>
                     <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
                             <AccordionTrigger>{post.ueberschrift}</AccordionTrigger>

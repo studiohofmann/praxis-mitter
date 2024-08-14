@@ -20,7 +20,7 @@ export default async function Menue() {
                         <div className="flex justify-between px-3 py-2 bg-white">
 
                             <Link href="/" className='flex items-center'>
-                                <h2>Praxis Mitter</h2>
+                                Praxis Mitter
                             </Link>
 
 
