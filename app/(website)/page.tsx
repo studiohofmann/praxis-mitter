@@ -7,10 +7,11 @@ import Leistungen from '@/components/leistungen'
 import LeistungenPost from '@/components/leistungen-post'
 
 
+
 export default async function Home() {
   const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
   return (
-    <main className="">
+    <main className="bg-neutral-100">
       <Willkommen />
       <HeroImage />
       <Leistungen />

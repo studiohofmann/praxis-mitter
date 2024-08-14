@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "@/app/globals.css";
 import Menue from "@/components/menue";
+import Footer from "@/components/footer";
 
 
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <div>
           <Menue />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

@@ -9,7 +9,7 @@ export default async function SchwerpunktePost() {
     return (
         <div className="">
             {schwerpunktePost.map((schwerpunkte) => (
-                <div key={schwerpunkte._id}>
+                <div key={schwerpunkte._id} className='pb-12'>
                     <h2 className='pb-3'>{schwerpunkte.ueberschrift}</h2>
                     <PortableText value={schwerpunkte.text} />
                 </div>

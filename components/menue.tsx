@@ -12,7 +12,7 @@ export default async function Menue() {
     const menue = await client.fetch<MENUE_QUERYResult>(MENUE_QUERY)
 
     return (
-        <main className="sticky top-0 z-10">
+        <main className="sticky top-0 z-10 bg-neutral-100">
 
             {menue.map((post) => (
                 <div key={post._id}>
@@ -26,8 +26,11 @@ export default async function Menue() {
 
 
                             <div className="flex items-center gap-4">
-                                <PortableText value={post.termin} />
-                                <ArrowRightOutlined />
+                                <div className='text-lime-600'>
+                                    <PortableText value={post.termin} />
+                                </div>
+                                <ArrowRightOutlined className='text-lime-600' />
+
                                 <Link href="hebv" >Termin</Link>
                             </div>
                         </div>

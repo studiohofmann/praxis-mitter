@@ -3,6 +3,8 @@ import { KONTAKT_QUERY } from '@/sanity/lib/queries'
 import { KONTAKT_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
 import Anfahrt from '@/components/anfahrt'
+import { MapProvider } from '@/app/providers/map-provider'
+import { MapComponent } from '@/components/map'
 
 
 
@@ -18,6 +20,10 @@ export default async function Kontakt() {
                 </div>
             ))}
             <Anfahrt />
+            <div className='h-24'> <MapProvider>
+                <MapComponent />
+            </MapProvider></div>
+
         </div>
     );
 }

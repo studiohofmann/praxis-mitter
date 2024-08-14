@@ -66,10 +66,12 @@
 
   body {
     @apply bg-background text-foreground;
+    @apply text-neutral-800
   }
 
   h1 {
-    @apply text-4xl
+    @apply text-4xl;
+    @appy font-bold;
   }
 
   h2 {
@@ -78,5 +80,11 @@
 
   h3 {
     @apply text-xs
+  }
+
+  a {}
+
+  a:hover {
+    @apply text-neutral-900
   }
 }

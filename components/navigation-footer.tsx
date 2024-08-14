@@ -3,16 +3,19 @@ import { NAVIGATION_QUERY } from '@/sanity/lib/queries'
 import { NAVIGATION_QUERYResult } from '@/sanity.types'
 import Link from "next/link";
 
-export default async function Navigation() {
+export default async function NavigationFooter() {
     const navigation = await client.fetch<NAVIGATION_QUERYResult>(NAVIGATION_QUERY)
 
     return (
-        <div className='flex flow-row justify-between bg-neutral-800 text-neutral-100 font-light px-3 py-2'>
+        <div className=''>
             {navigation.map((item) => (
                 <div key={item._id}>
-                    <Link href={item.slug}>{item.ueberschriftNavigation}</Link>
+                    <Link href={item.slug}><h3>{item.ueberschriftNavigation}</h3></Link>
+
                 </div>
             ))}
+            <h3><Link href="/impressum">Impressum</Link></h3>
+
         </div>
     );
 }

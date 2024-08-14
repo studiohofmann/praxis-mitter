@@ -7,7 +7,7 @@ export default async function Leistungen() {
     const leistungen = await client.fetch<LEISTUNGEN_QUERYResult>(LEISTUNGEN_QUERY)
 
     return (
-        <main className="px-3 py-12">
+        <div className="px-3 py-12">
 
             {leistungen.map((jo) => (
                 <div key={jo._id}>
@@ -17,6 +17,6 @@ export default async function Leistungen() {
                 </div>
             ))}
 
-        </main>
+        </div>
     );
 }

@@ -10,7 +10,9 @@ import leistungen from './schemas/leistungen'
 import leistungenPost from './schemas/leistungen-post'
 import menue from './schemas/menue'
 import user from './schemas/user'
+import impressum from './schemas/impressum'
+import footer from './schemas/footer'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blog, blogPost, home, kontakt, leistungen, leistungenPost, menue, schwerpunkte, schwerpunktePost, uebermich, user],
+  types: [blog, blogPost, footer, home, impressum, kontakt, leistungen, leistungenPost, menue, schwerpunkte, schwerpunktePost, uebermich, user],
 }

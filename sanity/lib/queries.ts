@@ -2,7 +2,9 @@ import { groq } from "next-sanity"
 
 export const BLOG_QUERY = groq`*[_type == "blog"]{_id, ueberschriftNavigation, text}`
 export const BLOG_POST_QUERY = groq`*[_type == "blogPost"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}`
+export const FOOTER_QUERY = groq`*[_type == "footer"] {_id, adresse, newsletterUeberschriift, newsletterText, kontaktText, copyright, designDevelopment}`
 export const HOME_QUERY = groq`*[_type == "home"] {_id, seite, bild, logo, text}`
+export const IMPRESSUM_QUERY = groq`*[_type == "impressum"] {_id, ueberschrift, text}`
 export const KONTAKT_QUERY = groq`*[_type == "kontakt"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}`
 export const LEISTUNGEN_QUERY = groq`*[_type == "leistungen"] {_id, ueberschrift, text}`
 export const LEISTUNGEN_POST_QUERY = groq`*[_type == "leistungenPost"] {_id, ueberschrift, text}`

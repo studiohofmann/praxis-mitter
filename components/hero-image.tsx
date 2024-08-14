@@ -23,7 +23,7 @@ export default async function HeroImage() {
                             fill
                             style={{ objectFit: 'cover' }}
                         />
-                        <div className='absolute text-white px-3'>
+                        <div className='absolute text-white  px-3'>
                             <PortableText value={image.bild.caption} />
                         </div>
                     </div>
