@@ -856,7 +856,7 @@ export type UEBER_MICH_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
+  } | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
