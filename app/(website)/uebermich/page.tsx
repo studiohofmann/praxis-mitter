@@ -11,22 +11,25 @@ export default async function Uebermich() {
     const ueberMich = await client.fetch<UEBER_MICH_QUERYResult>(UEBER_MICH_QUERY)
     return (
         <div className="px-3">
-            {ueberMich.map((willkommen) => (
-                <div key={willkommen._id}>
-                    <h1 className='pt-12'>{willkommen.ueberschriftNavigation}</h1>
+            {ueberMich.map((philipp) => (
+                <div key={philipp._id}>
+                    <h1 className='pt-12'>{philipp.ueberschriftNavigation}</h1>
                     <br />
                     <div className='relative h-96'>
-                        <Image
-                            className='pb-6'
-                            src={urlFor(willkommen.bild).url()}
-                            alt="image"
-                            fill
-                            style={{ objectFit: 'cover' }}
-                        />
+                        {philipp.bild && (
+                            <Image
+                                src={urlFor(philipp.bild).url()}
+                                alt="image"
+                                fill
+                                style={{ objectFit: 'cover' }}
+                            />
+                        )}
                     </div>
-                    <PortableText value={willkommen.text} />
+                    <PortableText value={philipp.text} />
                 </div>
             ))}
         </div>
     );
 }
+
+export const revalidate = 60;

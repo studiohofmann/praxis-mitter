@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Show only 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -60,18 +69,23 @@
 }
 
 @layer base {
+
+  .outfit {
+    font-family: var(--font-outfit)
+  }
+
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
-    @apply text-neutral-800
+    @apply text-neutral-700
   }
 
   h1 {
-    @apply text-4xl;
-    @appy font-bold;
+    @apply text-3xl;
+    @apply font-semibold;
+    @apply tracking-wide;
   }
 
   h2 {
@@ -82,9 +96,16 @@
     @apply text-xs
   }
 
-  a {}
+  a {
+    @apply text-breakerBay300
+  }
 
   a:hover {
     @apply text-neutral-900
+  }
+
+  button {
+    @apply text-neutral-900;
+    @apply h-full
   }
 }

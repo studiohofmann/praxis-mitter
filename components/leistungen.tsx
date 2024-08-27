@@ -7,7 +7,7 @@ export default async function Leistungen() {
     const leistungen = await client.fetch<LEISTUNGEN_QUERYResult>(LEISTUNGEN_QUERY)
 
     return (
-        <div className="px-3 py-12">
+        <div className="px-4 py-16">
 
             {leistungen.map((jo) => (
                 <div key={jo._id}>

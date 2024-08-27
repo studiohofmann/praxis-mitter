@@ -15,19 +15,8 @@ const footer = {
             of: [{ type: "block" }],
         }),
         defineField({
-            name: "newsletterUeberschriift",
-            title: "Newsletter Überschrift",
-            type: "string",
-        }),
-        defineField({
-            name: "newsletterText",
-            title: "Newsletter Text",
-            type: "array",
-            of: [{ type: "block" }],
-        }),
-        defineField({
-            name: "kontaktText",
-            title: "Kontakt Text",
+            name: "oeffnungszeiten",
+            title: "Öffnungszeiten",
             type: "array",
             of: [{ type: "block" }],
         }),

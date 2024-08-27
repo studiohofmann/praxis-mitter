@@ -7,7 +7,7 @@ export default async function Willkommen() {
     const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
 
     return (
-        <main className="px-3 py-12">
+        <main className="px-4 py-16 bg-gimblet50">
             {home.map((willkommen) => (
                 <div key={willkommen._id}>
                     <PortableText value={willkommen.text} />

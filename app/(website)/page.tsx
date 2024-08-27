@@ -5,6 +5,9 @@ import HeroImage from '@/components/hero-image'
 import Willkommen from '@/components/willkommen'
 import Leistungen from '@/components/leistungen'
 import LeistungenPost from '@/components/leistungen-post'
+import Termin from '@/components/termin'
+import Interessantes from '@/components/interessantes'
+
 
 
 
@@ -12,10 +15,14 @@ export default async function Home() {
   const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
   return (
     <main className="bg-neutral-100">
-      <Willkommen />
+
       <HeroImage />
+      <Willkommen />
+      <Termin />
       <Leistungen />
       <LeistungenPost />
+      <HeroImage />
+      <Interessantes />
     </main>
   );
 }

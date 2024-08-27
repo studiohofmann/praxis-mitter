@@ -9,7 +9,7 @@ export default async function LeistungenPost() {
     const leistungenPost = await client.fetch<LEISTUNGEN_POST_QUERYResult>(LEISTUNGEN_POST_QUERY)
 
     return (
-        <div className="px-3 pb-12">
+        <div className="px-4 pb-16">
 
             {leistungenPost.map((post) => (
                 <div key={post._id} className=''>
