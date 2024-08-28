@@ -1,28 +1,44 @@
-import { client } from '@/sanity/lib/client'
-import { NAVIGATION_QUERY } from '@/sanity/lib/queries'
-import { NAVIGATION_QUERYResult } from '@/sanity.types'
-import Link from 'next/link'
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { fetchSanityNavigationData } from '@/lib/fetchSanityData'; // Import your fetch function
+import Link from 'next/link';
 import Logo from '../logo';
 
-interface MenuePunkteProps {
-    onLinkClick: () => void;
-}
 
-export default async function MenuePunkte({ onLinkClick }: MenuePunkteProps) {
-    const navigation = await client.fetch<NAVIGATION_QUERYResult>(NAVIGATION_QUERY)
+export default function MenuePunkte() {
+    const [navigation, setNavigation] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Fetch data on component mount
+        fetchSanityNavigationData().then((data) => {
+            setNavigation(data);
+            setLoading(false);
+        }).catch((error) => {
+            console.error('Failed to fetch navigation data:', error);
+            setLoading(false);
+        });
+    }, []);
+
+    if (loading) {
+        return <p>Loading...</p>; // You can show a loading spinner or a placeholder here
+    }
 
     return (
 
         <div className="flex flex-col gap-6 w-1/2">
-            <Link href="/" className='' onClick={(e) => {
-                e.preventDefault(); // Prevent the default link behavior
-                window.location.href = "/"; // Navigate manually
-                onLinkClick(); // Close the menu
-            }}>
+            <Link href="/" className='text-neutral-700'>
                 <Logo />
             </Link>
+            {navigation.map((item) => (
+                <div key={item._id} className='bg-breakerBay200 px-3 text-neutral-700 py-2 rounded-sm shadow-md flex justify-center'>
+                    <Link href={item.slug} className='text-neutral-700'>
+                        {item.ueberschriftNavigation}
+                    </Link>
+                </div>
+            ))}
         </div>
-
 
     );
 }
