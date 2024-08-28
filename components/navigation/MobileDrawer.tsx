@@ -10,6 +10,7 @@ interface MyComponentProps {
 
 const MenuePunkte = dynamic(() => import('./MenuePunkte'), {
     ssr: false,
+    loading: () => <p>Loading...</p>,
 });
 
 export default function MobileDrawer({ isOpen, onClose }: MyComponentProps) {

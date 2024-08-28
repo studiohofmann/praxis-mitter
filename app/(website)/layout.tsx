@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "@/app/globals.css";
 import Menue from "@/components/menue";
 import Footer from "@/components/footer";
+import { StrictMode } from "react";
 
 
 
@@ -27,7 +28,9 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} font-sans`}>
       <body className="outfit">
         <Menue />
-        {children}
+        <StrictMode>
+          {children}
+        </StrictMode>
         <Footer />
       </body>
     </html>
