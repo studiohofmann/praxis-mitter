@@ -5,8 +5,12 @@ import { fetchSanityNavigationData } from '@/lib/fetchSanityData'; // Import you
 import Link from 'next/link';
 import Logo from '../logo';
 
+export interface MenuePunkteProps { // Make sure this interface is exported
+    onLinkClick: () => void;
+}
 
-export default function MenuePunkte() {
+
+export default function MenuePunkte({ onLinkClick }: MenuePunkteProps) {
     const [navigation, setNavigation] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -28,12 +32,20 @@ export default function MenuePunkte() {
     return (
 
         <div className="flex flex-col gap-6 w-1/2">
-            <Link href="/" className='text-neutral-700'>
+            <Link href="/" onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/";
+                onLinkClick();
+            }}>
                 <Logo />
             </Link>
             {navigation.map((item) => (
                 <div key={item._id} className='bg-breakerBay200 px-3 text-neutral-700 py-2 rounded-sm shadow-md flex justify-center'>
-                    <Link href={item.slug} className='text-neutral-700'>
+                    <Link href={item.slug} className='text-neutral-700' onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = item.slug;
+                        onLinkClick();
+                    }}>
                         {item.ueberschriftNavigation}
                     </Link>
                 </div>

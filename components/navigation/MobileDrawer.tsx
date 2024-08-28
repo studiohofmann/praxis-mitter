@@ -1,14 +1,17 @@
 "use client"
 
 import dynamic from 'next/dynamic';
+import { MenuePunkteProps } from './MenuePunkte'; // Import the props type
+
 
 interface MyComponentProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-const MenuePunkte = dynamic(() => import('./MenuePunkte'), {
+const MenuePunkte = dynamic<MenuePunkteProps>(() => import('./MenuePunkte'), {
     ssr: false,
+    loading: () => <p>Loading...</p>,
 });
 
 export default function MobileDrawer({ isOpen, onClose }: MyComponentProps) {
