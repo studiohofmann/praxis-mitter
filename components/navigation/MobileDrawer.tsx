@@ -1,7 +1,4 @@
-"use client"
-
 import dynamic from 'next/dynamic';
-
 
 interface MyComponentProps {
     isOpen: boolean;
@@ -9,7 +6,7 @@ interface MyComponentProps {
 }
 
 const MenuePunkte = dynamic(() => import('./MenuePunkte'), {
-    ssr: true,
+    ssr: false,
     loading: () => <p>Loading...</p>,
 });
 
