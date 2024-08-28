@@ -17,7 +17,7 @@ export default async function Footer() {
     const navigation = await client.fetch<NAVIGATION_QUERYResult>(NAVIGATION_QUERY)
 
     return (
-        <h3 className='px-4 pb-2 pt-16 bg-gimblet200'>
+        <h3 className='px-4 pb-2 pt-16 bg-gimblet300'>
             <div className='flex gap-3'>
                 {footer.map((item) => (
                     <div key={item._id} className='bg-breakerBay200 flex-1 rounded-sm shadow-md px-3 py-3'>
@@ -58,7 +58,6 @@ export default async function Footer() {
 
                         </div>
                     ))}
-                    <h3><Link href="/impressum">Impressum</Link></h3>
                 </div>
             </div>
 

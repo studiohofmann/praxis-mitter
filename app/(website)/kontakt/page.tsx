@@ -13,7 +13,7 @@ import Link from 'next/link'
 export default async function Kontakt() {
     const kontakt = await client.fetch<KONTAKT_QUERYResult>(KONTAKT_QUERY)
     return (
-        <div>
+        <div className='bg-gimblet100'>
             <div className="px-4 pt-16">
                 {kontakt.map((willkommen) => (
                     <div key={willkommen._id}>

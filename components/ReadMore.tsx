@@ -17,9 +17,11 @@ const ReadMore: React.FC<ReadMoreProps> = ({ value, maxLines = 3 }) => {
             <div className={isExpanded ? '' : 'line-clamp-3'}>
                 <PortableText value={value} />
             </div>
-            <button onClick={toggleReadMore} className="text-blue-500">
-                {isExpanded ? 'Read Less' : 'Read More'}
-            </button>
+            <div className='flex justify-center mt-3'>
+                <button onClick={toggleReadMore} className="bg-breakerBay200 px-3 text-neutral-700  py-2 rounded-sm shadow-md">
+                    {isExpanded ? 'weniger' : 'mehr'}
+                </button>
+            </div>
         </div>
     );
 };

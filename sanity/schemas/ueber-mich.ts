@@ -43,6 +43,38 @@ const uebermich = {
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: "ueberschrift",
+            title: "Überschrift",
+            type: "string",
+        }),
+        defineField({
+            name: "praxisText",
+            title: "Praxis Text",
+            type: "array",
+            of: [{ type: "block" }],
+        }),
+        defineField({
+            name: 'galerie',
+            title: 'Galerie',
+            type: 'array',
+            of: [{
+                name: 'bild',
+                type: 'image',
+                title: 'Bild',
+                options: {
+                    hotspot: true,
+                },
+                fields: [
+                    {
+                        name: 'alt',
+                        type: 'string',
+                        title: 'Alternative text',
+                    },
+                ],
+            },],
+        }),
+
     ],
 };
 

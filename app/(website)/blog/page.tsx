@@ -9,11 +9,10 @@ import BlogPost from '@/components/blog-post'
 export default async function Kontakt() {
     const blog = await client.fetch<BLOG_QUERYResult>(BLOG_QUERY)
     return (
-        <div className="px-4 pt-16">
+        <div className="px-4 py-16 bg-gimblet200">
             {blog.map((willkommen) => (
-                <div key={willkommen._id} className='pb-12'>
-                    <h1>{willkommen.ueberschriftNavigation}</h1>
-                    <br />
+                <div key={willkommen._id} className='mb-6'>
+                    <h1 className='mb-6'>{willkommen.ueberschriftNavigation}</h1>
                     <PortableText value={willkommen.text} />
                 </div>
             ))}

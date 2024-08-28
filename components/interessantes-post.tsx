@@ -11,31 +11,26 @@ export default async function InteressantesPost() {
     const interessantes = await client.fetch<INTERESSANTES_POST_QUERYResult>(INTERESSANTES_POST_QUERY)
 
     return (
-        <div className='mb-8'>
-
-            <div className='p-4 mb-8 rounded-sm shadow-md bg-gimblet100'>
-                <div>
-                    <h2 className='mb-2'>{interessantes.ueberschrift}</h2>
-                    <h3 className='mb-4'>{interessantes.datum}</h3>
-                </div>
-
-
-                <Image
-                    src={urlFor(interessantes.bild).url()}
-                    alt="hello"
-                    width={getImageDimensions(interessantes.bild).width}
-                    height={getImageDimensions(interessantes.bild).height}
-                    placeholder="blur"
-                    blurDataURL={urlFor(interessantes.bild).width(24).height(24).blur(10).url()}
-                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
-                    className='mb-4 rounded-sm'
-                />
-                <div className='mb-4'>
-                    <ReadMore value={interessantes.text} maxLines={3} />
-                </div>
-
-
-                <h3 className='mb-2'>von {interessantes.autor.user.name}</h3>
+        <div className='p-3 rounded-sm shadow-md bg-gimblet50'>
+            <div>
+                <h2 className='mb-3'>{interessantes.ueberschrift}</h2>
+                <h3 className='mb-3'>{interessantes.datum}</h3>
+            </div>
+            <Image
+                src={urlFor(interessantes.bild).url()}
+                alt="hello"
+                width={getImageDimensions(interessantes.bild).width}
+                height={getImageDimensions(interessantes.bild).height}
+                placeholder="blur"
+                blurDataURL={urlFor(interessantes.bild).width(24).height(24).blur(10).url()}
+                sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
+                className='mb-3 rounded-sm'
+            />
+            <div className='mb-6'>
+                <ReadMore value={interessantes.text} maxLines={3} />
+            </div>
+            <div className='flex gap-3 items-center justify-center'>
+                <h3>von {interessantes.autor.user.name}</h3>
                 <div className='rounded-full w-6'>
                     <Image
                         className='rounded-full'
@@ -46,15 +41,12 @@ export default async function InteressantesPost() {
                         placeholder="blur"
                         blurDataURL={urlFor(interessantes.autor.user.bild).width(24).height(24).blur(10).url()}
                         sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
-
                     />
                 </div>
-
-
-
             </div>
-
         </div>
+
+
 
     );
 }

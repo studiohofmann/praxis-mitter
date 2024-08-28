@@ -11,18 +11,18 @@ export default async function Termin() {
     const termin = await client.fetch<TERMIN_QUERYResult>(TERMIN_QUERY)
 
     return (
-        <div className="px-4 py-16 bg-gimblet100">
+        <div className="px-4 py-16 bg-gimblet200">
             {termin.map((termin) => (
                 <div key={termin._id}>
-                    <h1 className='mb-8'>{termin.ueberschrift}</h1>
-                    <div className='flex gap-4'>
+                    <h1 className='mb-6'>{termin.ueberschrift}</h1>
+                    <div className='flex gap-6'>
                         <div className='flex-1'>
                             <PortableText value={termin.text} />
                         </div>
-                        <div className='flex flex-1 flex-col gap-3 float-right'>
-                            <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2 rounded-sm shadow-md'><PhoneFilled className='pr-3' />Anruf</Link>
-                            <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2  rounded-sm shadow-md'><MailFilled className='pr-3' />Email</Link>
-                            <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2  rounded-sm shadow-md'><WhatsAppOutlined className='pr-3' />WhatsApp</Link>
+                        <div className='flex flex-col gap-3 flex-1 float-right'>
+                            <Link href={'/'} className='bg-breakerBay200 px-3 text-neutral-700  py-2 rounded-sm shadow-md'><PhoneFilled className='pr-3' />Anruf</Link>
+                            <Link href={'/'} className='bg-breakerBay200 px-3 text-neutral-700  py-2  rounded-sm shadow-md'><MailFilled className='pr-3' />Email</Link>
+                            <Link href={'/'} className='bg-breakerBay200 px-3 text-neutral-700  py-2  rounded-sm shadow-md'><WhatsAppOutlined className='pr-3' />WhatsApp</Link>
                         </div>
                     </div>
                 </div>

@@ -9,11 +9,10 @@ import SchwerpunktePost from '@/components/schwerpunkte-post'
 export default async function Schwerpunkte() {
     const schwerpunkte = await client.fetch<SCHWERPUNKTE_QUERYResult>(SCHWERPUNKTE_QUERY)
     return (
-        <div className="px-3">
+        <div className="px-4 py-16 bg-gimblet100">
             {schwerpunkte.map((willkommen) => (
-                <div key={willkommen._id} className='pb-6'>
-                    <h1 className='pt-12'>{willkommen.ueberschriftNavigation}</h1>
-                    <br />
+                <div key={willkommen._id} className='mb-6'>
+                    <h1 className='mb-6'>{willkommen.ueberschriftNavigation}</h1>
                     <PortableText value={willkommen.text} />
                 </div>
             ))}

@@ -78,12 +78,15 @@
     @apply border-border;
   }
 
+  html,
   body {
-    @apply text-neutral-700
+    @apply text-neutral-700;
+    @apply h-full;
+    @apply m-0;
   }
 
   h1 {
-    @apply text-3xl;
+    @apply text-2xl;
     @apply font-semibold;
     @apply tracking-wide;
   }

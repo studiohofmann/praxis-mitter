@@ -106,6 +106,38 @@ export type Uebermich = {
     _type: "block";
     _key: string;
   }>;
+  ueberschrift?: string;
+  praxisText?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  galerie?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "bild";
+    _key: string;
+  }>;
 };
 
 export type Termin = {
@@ -141,6 +173,18 @@ export type SchwerpunktePost = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  bild?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   ueberschrift?: string;
   text?: Array<{
     children?: Array<{
@@ -368,7 +412,7 @@ export type Impressum = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  ueberschrift?: string;
+  ueberschriftNavigation?: string;
   slug?: Slug;
   text?: Array<{
     children?: Array<{
@@ -457,6 +501,36 @@ export type Home = {
     _type: "block";
     _key: string;
   }>;
+  bildSektion?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    caption?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    _type: "image";
+  };
 };
 
 export type Footer = {
@@ -861,7 +935,7 @@ export type FOOTER_QUERYResult = Array<{
   }> | any;
 }>;
 // Variable: HOME_QUERY
-// Query: *[_type == "home"] {_id, seite, bild, logo, text}
+// Query: *[_type == "home"] {_id, seite, bild, logo, text, bildSektion}
 export type HOME_QUERYResult = Array<{
   _id: string;
   seite: string | any;
@@ -925,12 +999,42 @@ export type HOME_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | any;
+  bildSektion: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    caption?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    _type: "image";
+  } | any;
 }>;
 // Variable: IMPRESSUM_QUERY
-// Query: *[_type == "impressum"] {_id, ueberschrift, text}
+// Query: *[_type == "impressum"] {_id, ueberschriftNavigation, text}
 export type IMPRESSUM_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
+  ueberschriftNavigation: string | any;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1169,10 +1273,6 @@ export type NAVIGATION_QUERYResult = Array<{
   slug: any;
 } | {
   _id: string;
-  ueberschriftNavigation: any;
-  slug: string | any;
-} | {
-  _id: string;
   ueberschriftNavigation: string | any;
   slug: string | any;
 }>;
@@ -1201,9 +1301,21 @@ export type SCHWERPUNKTE_QUERYResult = Array<{
   }> | any;
 }>;
 // Variable: SCHWERPUNKTE_POST_QUERY
-// Query: *[_type == "schwerpunktePost"] {_id, ueberschrift, text}
+// Query: *[_type == "schwerpunktePost"] {_id, bild, ueberschrift, text}
 export type SCHWERPUNKTE_POST_QUERYResult = Array<{
   _id: string;
+  bild: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | any;
   ueberschrift: string | any;
   text: Array<{
     children?: Array<{
@@ -1249,7 +1361,7 @@ export type TERMIN_QUERYResult = Array<{
   }> | any;
 }>;
 // Variable: UEBER_MICH_QUERY
-// Query: *[_type == "uebermich"] {_id, ueberschriftNavigation, bild, text}
+// Query: *[_type == "uebermich"] {_id, ueberschriftNavigation, bild, text, ueberschrift, praxisText, galerie[]{    asset->{      _id,      url,}}}
 export type UEBER_MICH_QUERYResult = Array<{
   _id: string;
   ueberschriftNavigation: string | any;
@@ -1283,6 +1395,31 @@ export type UEBER_MICH_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | any;
+  ueberschrift: string | any;
+  praxisText: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | any;
+  galerie: Array<{
+    asset: {
+      _id: string;
+      url: string | any;
+    } | any;
+  }> | any;
 }>;
 
 // Query TypeMap
@@ -1292,8 +1429,8 @@ declare module "@sanity/client" {
     "*[_type == \"blog\"]{_id, ueberschriftNavigation, text}": BLOG_QUERYResult;
     "*[_type == \"blogPost\"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}": BLOG_POST_QUERYResult;
     "*[_type == \"footer\"] {_id, adresse, newsletterUeberschriift, newsletterText, oeffnungszeiten, copyright, designDevelopment}": FOOTER_QUERYResult;
-    "*[_type == \"home\"] {_id, seite, bild, logo, text}": HOME_QUERYResult;
-    "*[_type == \"impressum\"] {_id, ueberschrift, text}": IMPRESSUM_QUERYResult;
+    "*[_type == \"home\"] {_id, seite, bild, logo, text, bildSektion}": HOME_QUERYResult;
+    "*[_type == \"impressum\"] {_id, ueberschriftNavigation, text}": IMPRESSUM_QUERYResult;
     "*[_type == \"interessantes\"]{_id, ueberschrift, textOben, textUnten}": INTERESSANTES_QUERYResult;
     "*[_type == \"blogPost\"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}[0]": INTERESSANTES_POST_QUERYResult;
     "*[_type == \"kontakt\"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}": KONTAKT_QUERYResult;
@@ -1302,8 +1439,8 @@ declare module "@sanity/client" {
     "*[_type == \"menue\"] {_id, termin}": MENUE_QUERYResult;
     "*[defined(ueberschriftNavigation) && defined(slug)]{_id, ueberschriftNavigation, \"slug\": slug.current,}": NAVIGATION_QUERYResult;
     "*[_type == \"schwerpunkte\"] {_id, ueberschriftNavigation, text}": SCHWERPUNKTE_QUERYResult;
-    "*[_type == \"schwerpunktePost\"] {_id, ueberschrift, text}": SCHWERPUNKTE_POST_QUERYResult;
+    "*[_type == \"schwerpunktePost\"] {_id, bild, ueberschrift, text}": SCHWERPUNKTE_POST_QUERYResult;
     "*[_type == \"termin\"] {_id, ueberschrift, text}": TERMIN_QUERYResult;
-    "*[_type == \"uebermich\"] {_id, ueberschriftNavigation, bild, text}": UEBER_MICH_QUERYResult;
+    "*[_type == \"uebermich\"] {_id, ueberschriftNavigation, bild, text, ueberschrift, praxisText, galerie[]{\n    asset->{\n      _id,\n      url,}}}": UEBER_MICH_QUERYResult;
   }
 }

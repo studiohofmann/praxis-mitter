@@ -1,5 +1,6 @@
-import { CloseOutlined } from '@ant-design/icons';
-import Link from 'next/link';
+"use client"
+
+import dynamic from 'next/dynamic';
 
 
 interface MyComponentProps {
@@ -7,25 +8,22 @@ interface MyComponentProps {
     onClose: () => void;
 }
 
-
+const MenuePunkte = dynamic(() => import('./MenuePunkte'), {
+    ssr: false,
+});
 
 export default function MobileDrawer({ isOpen, onClose }: MyComponentProps) {
+
+    const handleClose = () => {
+        onClose();
+    };
     return (
         <div
-            className={`fixed flex items-center justify-center z-10 top-0 right-0 h-full w-full bg-breakerBay50  transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
+            className={`bg-gimblet700 fixed flex items-center justify-center z-10 top-0 right-0 h-full w-full bg-breakerBay50  transition-transform duration-300 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
                 }`}
         >
             <div className='flex flex-col gap-4 items-center'>
-                <button className="" onClick={onClose}>
-                    <CloseOutlined />
-                </button>
-                <ul className="flex gap-4 flex-col items-center">
-                    <Link href="/schwerpunkte">Schwerpunkte</Link>
-                    <Link href="/uebermich">Über mich</Link>
-                    <Link href="/blog">Blog</Link>
-                    <Link href="/kontakt">Kontakt</Link>
-
-                </ul>
+                <MenuePunkte onLinkClick={handleClose} />
             </div>
         </div>
     );

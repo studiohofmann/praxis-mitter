@@ -57,6 +57,28 @@ const home = {
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: 'bildSektion',
+            title: 'Bild Sektion',
+            type: 'image',
+            options: {
+                hotspot: true // <-- Defaults to false
+            },
+            fields: [
+                {
+                    name: "alt",
+                    title: "Alt",
+                    type: "string",
+                },
+                {
+                    name: "caption",
+                    title: "Caption",
+                    type: "array",
+                    of: [{ type: "block" }],
+                },
+
+            ]
+        }),
     ],
 };
 

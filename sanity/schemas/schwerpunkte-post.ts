@@ -9,6 +9,21 @@ const schwerpunktePost = {
 
     fields: [
         defineField({
+            name: 'bild',
+            title: 'Bild',
+            type: 'image',
+            options: {
+                hotspot: true // <-- Defaults to false
+            },
+            fields: [
+                {
+                    name: "alt",
+                    title: "Alt",
+                    type: "string",
+                }
+            ]
+        }),
+        defineField({
             name: "ueberschrift",
             title: "Überschrift",
             type: "string",

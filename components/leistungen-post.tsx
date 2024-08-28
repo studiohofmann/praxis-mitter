@@ -9,8 +9,7 @@ export default async function LeistungenPost() {
     const leistungenPost = await client.fetch<LEISTUNGEN_POST_QUERYResult>(LEISTUNGEN_POST_QUERY)
 
     return (
-        <div className="px-4 pb-16">
-
+        <div>
             {leistungenPost.map((post) => (
                 <div key={post._id} className=''>
                     <Accordion type="single" collapsible>

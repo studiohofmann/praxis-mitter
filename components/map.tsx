@@ -30,6 +30,8 @@ const defaultMapOptions = {
     mapTypeId: 'roadmap',
 };
 
+const defaultIcon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+
 const MapComponent = () => {
     return (
         <div className="w-full h-full">
@@ -39,7 +41,9 @@ const MapComponent = () => {
                 zoom={defaultMapZoom}
                 options={defaultMapOptions}
             >
-                <Marker position={defaultMapCenter} icon={{ scale: 3, path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW, strokeColor: "red", }} />
+                <Marker
+                    position={defaultMapCenter}
+                    icon={defaultIcon} />
             </GoogleMap>
         </div>
     )

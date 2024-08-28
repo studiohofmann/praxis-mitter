@@ -9,8 +9,8 @@ const impressum = {
 
     fields: [
         defineField({
-            name: "ueberschrift",
-            title: "Überschrift",
+            name: "ueberschriftNavigation",
+            title: "Überschrift / Navigation",
             type: "string",
         }),
         defineField({
