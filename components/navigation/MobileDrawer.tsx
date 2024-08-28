@@ -9,7 +9,7 @@ interface MyComponentProps {
 }
 
 const MenuePunkte = dynamic(() => import('./MenuePunkte'), {
-    ssr: false,
+    ssr: true,
     loading: () => <p>Loading...</p>,
 });
 
