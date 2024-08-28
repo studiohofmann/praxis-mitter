@@ -17,7 +17,7 @@ export default async function Praxis() {
                     <div className='mb-6'>
                         <PortableText value={philipp.praxisText} />
                     </div>
-                    {philipp.galerie.map((image) => (
+                    {philipp.galerie.map((image: any) => (
                         <div key={image._id} className="relative flex flex-col gap-3">
                             <div className='mb-5'>
                                 <Image
