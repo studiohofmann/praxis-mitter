@@ -17,7 +17,7 @@ export default async function SchwerpunktePost() {
                     <div className='relative w-full h-24'>
                         {schwerpunkte.bild && (
                             <Image
-                                src={urlFor(schwerpunkte.bild).url() || ''}
+                                src={urlFor(schwerpunkte.bild).url()}
                                 alt="image"
                                 fill
                                 style={{ objectFit: 'cover' }}
