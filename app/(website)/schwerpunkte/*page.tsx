@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client';
 import { SCHWERPUNKTE_QUERY } from '@/sanity/lib/queries';
 import { SCHWERPUNKTE_QUERYResult } from '@/sanity.types';
 import { PortableText } from 'next-sanity';
-import SchwerpunktePost from '@/components/*schwerpunkte-post';
+import SchwerpunktePost from '@/components/schwerpunkte-post';
 
 export default async function Schwerpunkte() {
     const schwerpunkte = await client.fetch<SCHWERPUNKTE_QUERYResult>(SCHWERPUNKTE_QUERY);

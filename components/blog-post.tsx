@@ -21,14 +21,10 @@ export default async function BlogPost() {
                     {/* Check if post.bild is defined and has a valid asset */}
                     {post.bild && post.bild.asset ? (
                         <Image
-                            src={urlFor(post.bild).url() || ''} // Ensure it's a valid URL
-                            alt="Blog Post Image"
-                            width={getImageDimensions(post.bild)?.width || 0} // Fallback to 0 if width is null
-                            height={getImageDimensions(post.bild)?.height || 0} // Fallback to 0 if height is null
-                            placeholder="blur"
-                            blurDataURL={urlFor(post.bild).width(24).height(24).blur(10).url() || ''}
-                            sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
-                            className='mb-3 rounded-sm'
+                            src={urlFor(post.bild).url()}
+                            alt="image"
+                            fill
+                            style={{ objectFit: 'cover' }}
                         />
                     ) : (
                         <div className='bg-gray-300 h-48 w-full rounded-sm flex items-center justify-center'>
@@ -49,14 +45,10 @@ export default async function BlogPost() {
                                     {/* Check if post.autor.user.bild is defined before rendering Image */}
                                     {post.autor.user.bild && post.autor.user.bild.asset ? (
                                         <Image
-                                            className='rounded-full'
-                                            src={urlFor(post.autor.user.bild).url() || ''}
-                                            alt="Author Image"
-                                            width={getImageDimensions(post.autor.user.bild)?.width || 0}
-                                            height={getImageDimensions(post.autor.user.bild)?.height || 0}
-                                            placeholder="blur"
-                                            blurDataURL={urlFor(post.autor.user.bild).width(24).height(24).blur(10).url() || ''}
-                                            sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
+                                            src={urlFor(post.autor.user.bild).url()}
+                                            alt="image"
+                                            fill
+                                            style={{ objectFit: 'cover' }}
                                         />
                                     ) : (
                                         <div className='bg-gray-300 h-6 w-6 rounded-full flex items-center justify-center'>

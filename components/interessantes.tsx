@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client';
 import { INTERESSANTES_QUERY } from '@/sanity/lib/queries';
 import { INTERESSANTES_QUERYResult } from '@/sanity.types';
 import { PortableText } from 'next-sanity';
-import InteressantesPost from './*interessantes-post';
+import InteressantesPost from './interessantes-post';
 import Link from 'next/link';
 
 export default async function Interessantes() {

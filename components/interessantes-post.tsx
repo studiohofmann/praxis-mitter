@@ -26,16 +26,12 @@ export default async function InteressantesPost() {
                 <h3 className='mb-3'>{interessantes.datum}</h3>
             </div>
 
-            {bildUrl && (
+            {bild && (
                 <Image
-                    src={bildUrl}
-                    alt="hello"
-                    width={getImageDimensions(bild)?.width || 0} // Fallback to 0 if width is null
-                    height={getImageDimensions(bild)?.height || 0} // Fallback to 0 if height is null
-                    placeholder="blur"
-                    blurDataURL={urlFor(bild).width(24).height(24).blur(10).url() || ''}
-                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
-                    className='mb-3 rounded-sm'
+                    src={urlFor(bild).url()}
+                    alt="image"
+                    fill
+                    style={{ objectFit: 'cover' }}
                 />
             )}
 
@@ -50,14 +46,10 @@ export default async function InteressantesPost() {
                         <div className='rounded-full w-6'>
                             {interessantes.autor.user.bild && (
                                 <Image
-                                    className='rounded-full'
-                                    src={urlFor(interessantes.autor.user.bild).url() || ''}
-                                    alt="hello"
-                                    width={getImageDimensions(interessantes.autor.user.bild)?.width || 0}
-                                    height={getImageDimensions(interessantes.autor.user.bild)?.height || 0}
-                                    placeholder="blur"
-                                    blurDataURL={urlFor(interessantes.autor.user.bild).width(24).height(24).blur(10).url() || ''}
-                                    sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,40vw"
+                                    src={urlFor(interessantes.autor.user.bild).url()}
+                                    alt="image"
+                                    fill
+                                    style={{ objectFit: 'cover' }}
                                 />
                             )}
                         </div>
