@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { z } from "zod";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 export default function Home() {
     const [errors, setErrors] = useState<any[]>([]);
@@ -10,7 +11,7 @@ export default function Home() {
 
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
-    const [hobbies, setHobbies] = useState([]);
+    const [hobbies] = useState([]);
 
     const onSubmit = async (e: any) => {
         e.preventDefault();
@@ -55,10 +56,10 @@ export default function Home() {
     };
 
     return (
-        <main className="flex flex-col mb-16">
+        <main className="flex flex-col">
 
             <form
-                className="flex flex-col gap-3"
+                className="flex flex-col gap-4"
                 method="post"
                 onSubmit={onSubmit}
             >
@@ -66,7 +67,6 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="Name"
-                        className="w-full bg-breakerBay100 shadow-md rounded-sm px-3 py-2 text-black outline-none transition focus:border-blue-500 active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         onChange={(e) => setName(e.target.value)}
                         autoComplete="off"
                         required
@@ -80,7 +80,6 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="Vorname"
-                        className="w-full bg-breakerBay100 shadow-md rounded-sm px-3 py-2 text-black outline-none transition focus:border-blue-500 active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         onChange={(e) => setName(e.target.value)}
                         autoComplete="off"
                         required
@@ -94,7 +93,6 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="Email"
-                        className="w-full bg-breakerBay100 shadow-md rounded-sm px-3 py-2 text-black outline-none transition focus:border-blue-500 active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete="off"
                         required
@@ -107,7 +105,6 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="Nachricht"
-                        className="w-full bg-breakerBay100 shadow-md rounded-sm px-3 py-2 text-black outline-none transition focus:border-blue-500 active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete="off"
                         required
@@ -120,11 +117,19 @@ export default function Home() {
                 <div className="text-end">
                     <button
                         type="submit"
-                        className="bg-gradient-to-tr from-breakerBay300 to-breakerBay400 text-gimblet50 px-3  py-2 rounded-sm shadow-md disabled:cursor-not-allowed disabled:opacity-30"
-                        disabled={isLoading}
-                    >
-                        {isLoading ? "Saving..." : "absenden"}
+                        className="w-2/3 text-left border-norway600 hover:border-norway800 text-norway600 hover:text-norway800 disabled:cursor-not-allowed disabled:opacity-30"
+                        disabled={isLoading}>
+
+                        <div className='flex duration-300 ease-in-out'>
+                            <div className='flex-1'>
+                                {isLoading ? "Saving..." : "absenden"}
+                            </div>
+                            <div className='flex-1'>
+                                <ArrowRightOutlined className="text-lg ml-3" />
+                            </div>
+                        </div>
                     </button>
+
                 </div>
             </form>
             {/* Success Popup */}

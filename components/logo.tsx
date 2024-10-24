@@ -1,19 +1,10 @@
-'use client'
-
-
-import Image from "next/image";
-import logo from "@/public/logo.svg"
+import LogoNorway400 from "@/public/logo-norway400.svg"
+import Link from "next/link";
 
 export default function Logo() {
-
     return (
-        <div className="">
-            <Image
-                priority
-                src={logo}
-                alt="Follow us on Twitter"
-                className=""
-            />
-        </div>
+        <Link href="/" className='w-full border-none p-0'>
+            <LogoNorway400 className="h-11 text-norway600 hover:text-norway800 duration-300 ease-in-out" />
+        </Link>
     );
 }

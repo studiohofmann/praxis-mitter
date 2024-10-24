@@ -1,11 +1,11 @@
 import { defineField } from "sanity";
-import { BookIcon } from '@sanity/icons'
+import { AddCommentIcon } from '@sanity/icons'
 
-const impressum = {
-    name: "impressum",
-    title: "Impressum",
+const anfahrt = {
+    name: "anfahrt",
+    title: "Anfahrt",
     type: "document",
-    icon: BookIcon,
+    icon: AddCommentIcon,
 
     fields: [
         defineField({
@@ -34,7 +34,18 @@ const impressum = {
             type: "array",
             of: [{ type: "block" }],
         }),
+        defineField({
+            name: "ueberschriftAnfahrt",
+            title: "Überschrift Anfahrt",
+            type: "string",
+        }),
+        defineField({
+            name: "textAnfahrt",
+            title: "Text Anfahrt",
+            type: "array",
+            of: [{ type: "block" }],
+        }),
     ],
 };
 
-export default impressum;
+export default anfahrt;

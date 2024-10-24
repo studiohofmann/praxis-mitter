@@ -14,7 +14,9 @@ import user from '../schemas/user'
 import impressum from '../schemas/impressum'
 import footer from '../schemas/footer'
 import termin from '../schemas/termin'
+import anfahrt from '../schemas/anfahrt'
+import praxis from '../schemas/praxis'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blog, blogPost, footer, home, impressum, interessantes, kontakt, leistungen, leistungenPost, menue, schwerpunkte, schwerpunktePost, termin, uebermich, user],
+  types: [anfahrt, blog, blogPost, footer, home, impressum, interessantes, kontakt, leistungen, leistungenPost, menue, praxis, schwerpunkte, schwerpunktePost, termin, uebermich, user],
 }

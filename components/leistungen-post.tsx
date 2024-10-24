@@ -9,9 +9,15 @@ export default async function LeistungenPost() {
     const leistungenPost = await client.fetch<LEISTUNGEN_POST_QUERYResult>(LEISTUNGEN_POST_QUERY)
 
     return (
-        <div>
+        <div className='px-4'>
             {leistungenPost.map((post) => (
-                <div key={post._id} className=''>
+                <div key={post._id}>
+                    <ul className='list-disc'>
+                        <li className='font-bold'>
+                            {post.ueberschrift}
+                        </li>
+                    </ul>
+                    {/*
                     <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
                             <AccordionTrigger>{post.ueberschrift}</AccordionTrigger>
@@ -20,11 +26,9 @@ export default async function LeistungenPost() {
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
-
-
+                    */}
                 </div>
             ))}
-
         </div>
     );
 }

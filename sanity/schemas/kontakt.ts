@@ -23,19 +23,20 @@ const kontakt = {
             validation: (rule) => rule.required(),
         }),
         defineField({
-            name: "text",
-            title: "Text",
+            name: 'reihenfolge',
+            title: 'Reihenfolge',  // Add a descriptive title for your field
+            type: 'number',       // This is the number field
+            description: 'Anordnung der Links ',
+        }),
+        defineField({
+            name: "textFormular",
+            title: "Text Formular",
             type: "array",
             of: [{ type: "block" }],
         }),
         defineField({
-            name: "ueberschriftAnfahrt",
-            title: "Überschrift Anfahrt",
-            type: "string",
-        }),
-        defineField({
-            name: "textAnfahrt",
-            title: "Text Anfahrt",
+            name: "textIcons",
+            title: "Text Icons",
             type: "array",
             of: [{ type: "block" }],
         }),

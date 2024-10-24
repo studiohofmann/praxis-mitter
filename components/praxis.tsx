@@ -1,6 +1,6 @@
 import { client } from '@/sanity/lib/client'
-import { UEBER_MICH_QUERY } from '@/sanity/lib/queries'
-import { UEBER_MICH_QUERYResult } from '@/sanity.types'
+import { PRAXIS_QUERY } from '@/sanity/lib/queries'
+import { PRAXIS_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
 import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
@@ -8,28 +8,31 @@ import Image from 'next/image'
 
 
 export default async function Praxis() {
-    const ueberMich = await client.fetch<UEBER_MICH_QUERYResult>(UEBER_MICH_QUERY)
+    const praxis = await client.fetch<PRAXIS_QUERYResult>(PRAXIS_QUERY)
     return (
-        <div className="px-4 py-16 bg-gimblet200">
-            {ueberMich.map((philipp) => (
-                <div key={philipp._id}>
-                    <h1 className='mb-6'>{philipp.ueberschrift}</h1>
-                    <div className='mb-6'>
-                        <PortableText value={philipp.praxisText} />
+        <div id="praxis" className="px-8 pt-16 pb-32 bg-avocado300 text-avocado600">
+            {praxis.map((item: any) => (
+                <div key={item._id} className='flex flex-col gap-8'>
+                    <h2>{item.ueberschriftNavigation}</h2>
+                    <div>
+                        <PortableText value={item.text} />
                     </div>
-                    {philipp.galerie.map((image: any) => (
-                        <div key={image._id} className="relative flex flex-col gap-3">
-                            <div className='mb-5'>
-                                <Image
-                                    src={urlFor(image).width(400).height(300).url()}
-                                    alt=""
-                                    width={400}
-                                    height={300}
-                                    className="object-cover w-full h-48 rounded-sm"
-                                />
+                    <div className='flex flex-col gap-4'>
+                        {item.galerie.map((image: any) => (
+                            <div key={image._id}>
+                                <div className='relative h-64'>
+                                    {image && (
+                                        <Image
+                                            src={urlFor(image).url()}
+                                            alt="image"
+                                            fill
+                                            style={{ objectFit: 'cover' }}
+                                        />
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             ))
             }

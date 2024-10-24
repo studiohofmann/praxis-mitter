@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "@/app/globals.css";
-import Menue from "@/components/menue";
+import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { StrictMode } from "react";
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} font-sans`}>
       <body className="outfit">
-        <Menue />
+        <Navigation />
         <StrictMode>
           {children}
         </StrictMode>

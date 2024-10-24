@@ -80,19 +80,24 @@
 
   html,
   body {
-    @apply text-neutral-700;
+    @apply text-norway600;
     @apply h-full;
     @apply m-0;
+    @apply font-semibold;
+    @apply tracking-wider;
   }
 
   h1 {
-    @apply text-2xl;
-    @apply font-semibold;
-    @apply tracking-wide;
+    @apply text-5xl;
+    @apply font-bold;
+    @apply tracking-wider;
   }
 
   h2 {
-    @apply font-semibold
+    @apply text-3xl;
+    @apply font-semibold;
+    @apply font-bold;
+    @apply tracking-wider;
   }
 
   h3 {
@@ -100,15 +105,63 @@
   }
 
   a {
-    @apply text-breakerBay300
+    @apply border-2;
+    @apply border-norway600;
+    @apply px-4;
+    @apply py-2;
+    @apply text-norway600;
+  }
+
+  Link {
+    @apply border-2;
+    @apply border-norway400;
+    @apply px-4;
+    @apply py-2;
+    @apply text-norway400;
   }
 
   a:hover {
-    @apply text-neutral-900
+    @apply text-norway800;
+    @apply border-norway800;
   }
 
   button {
-    @apply text-neutral-900;
-    @apply h-full
+    @apply border-2;
+    @apply border-norway400;
+    @apply px-4;
+    @apply py-2;
+    @apply text-norway400
+  }
+
+  input {
+    @apply text-norway600;
+    @apply placeholder-norway300;
+    @apply bg-norway200;
+    @apply w-full;
+    @apply border-2;
+    @apply border-norway600;
+    @apply px-4;
+    @apply py-2;
+    @apply outline-none;
+    @apply transition;
+    @apply focus:border-norway800;
+    @apply disabled:cursor-default;
+  }
+
+  .map-container {
+    @apply w-full;
+    @apply h-96;
+  }
+
+  .map-container a {
+    @apply border-none;
+    @apply text-norway600;
+    @apply inline;
+
+  }
+
+  .map-container a:hover {
+    @apply border-none;
+
   }
 }

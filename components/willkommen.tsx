@@ -1,16 +1,21 @@
-import { client } from '@/sanity/lib/client'
-import { HOME_QUERY } from '@/sanity/lib/queries'
-import { HOME_QUERYResult } from '@/sanity.types'
-import { PortableText } from 'next-sanity'
+import { client } from '@/sanity/lib/client';
+import { HOME_QUERY } from '@/sanity/lib/queries';
+import { HOME_QUERYResult } from '@/sanity.types';
+import { PortableText } from 'next-sanity';
 
 export default async function Willkommen() {
-    const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY)
+    const home = await client.fetch<HOME_QUERYResult>(HOME_QUERY);
 
     return (
-        <div className="px-4 py-16 bg-gimblet100">
+        <div className="px-8 pt-80 pb-32 bg-norway300">
             {home.map((willkommen) => (
                 <div key={willkommen._id}>
-                    <PortableText value={willkommen.text} />
+                    {/* Ensure willkommen.text is not null or undefined */}
+                    {willkommen.text ? (
+                        <PortableText value={willkommen.text} />
+                    ) : (
+                        <p>No content available</p>
+                    )}
                 </div>
             ))}
         </div>

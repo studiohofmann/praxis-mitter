@@ -1,6 +1,6 @@
 import { client } from '@/sanity/lib/client'
-import { KONTAKT_QUERY } from '@/sanity/lib/queries'
-import { KONTAKT_QUERYResult } from '@/sanity.types'
+import { ANFAHRT_QUERY } from '@/sanity/lib/queries'
+import { ANFAHRT_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
 import { MapProvider } from '@/app/providers/map-provider'
 import { MapComponent } from '@/components/map'
@@ -8,26 +8,21 @@ import { MapComponent } from '@/components/map'
 
 
 export default async function Anfahrt() {
-    const kontakt = await client.fetch<KONTAKT_QUERYResult>(KONTAKT_QUERY)
+    const anfahrt = await client.fetch<ANFAHRT_QUERYResult>(ANFAHRT_QUERY)
     const center = { lat: 47.3768866, lng: 8.541694 };
     return (
-        <div className="px-4 py-16 bg-gimblet200">
-            {kontakt.map((anfahrt) => (
-                <div key={anfahrt._id}>
-                    <h1 className='mb-6'>
-                        {anfahrt.ueberschriftAnfahrt}
-                    </h1>
-                    <div className='mb-6'>
-                        <PortableText value={anfahrt.textAnfahrt} />
-                    </div>
+        <div id="anfahrt" className="px-8 pt-16 pb-32 bg-avocado300 text-avocado600">
+            {anfahrt.map((item: any) => (
+                <div key={item._id} className='flex flex-col gap-8'>
+                    <h2>{item.ueberschriftNavigation}</h2>
+                    <PortableText value={item.text} />
+                    <MapProvider>
+                        <MapComponent />
+                    </MapProvider>
+
 
                 </div>
             ))}
-            <div className='h-72'>
-                <MapProvider>
-                    <MapComponent />
-                </MapProvider>
-            </div>
         </div>
     );
 }

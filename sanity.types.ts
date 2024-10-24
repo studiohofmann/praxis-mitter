@@ -76,6 +76,7 @@ export type Uebermich = {
   _rev: string;
   ueberschriftNavigation?: string;
   slug?: Slug;
+  reihenfolge?: number;
   bild?: {
     asset?: {
       _ref: string;
@@ -234,6 +235,48 @@ export type Schwerpunkte = {
   }>;
 };
 
+export type Praxis = {
+  _id: string;
+  _type: "praxis";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  ueberschriftNavigation?: string;
+  slug?: Slug;
+  reihenfolge?: number;
+  text?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  galerie?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "bild";
+    _key: string;
+  }>;
+};
+
 export type Menue = {
   _id: string;
   _type: "menue";
@@ -322,7 +365,8 @@ export type Kontakt = {
   _rev: string;
   ueberschriftNavigation?: string;
   slug?: Slug;
-  text?: Array<{
+  reihenfolge?: number;
+  textFormular?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -340,8 +384,7 @@ export type Kontakt = {
     _type: "block";
     _key: string;
   }>;
-  ueberschriftAnfahrt?: string;
-  textAnfahrt?: Array<{
+  textIcons?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -414,6 +457,7 @@ export type Impressum = {
   _rev: string;
   ueberschriftNavigation?: string;
   slug?: Slug;
+  reihenfolge?: number;
   text?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -767,20 +811,68 @@ export type Blog = {
   }>;
 };
 
+export type Anfahrt = {
+  _id: string;
+  _type: "anfahrt";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  ueberschriftNavigation?: string;
+  slug?: Slug;
+  reihenfolge?: number;
+  text?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  ueberschriftAnfahrt?: string;
+  textAnfahrt?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
 export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Uebermich | Termin | SchwerpunktePost | Schwerpunkte | Menue | LeistungenPost | Leistungen | Kontakt | Interessantes | Impressum | Home | Footer | BlogPost | User | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Blog | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Uebermich | Termin | SchwerpunktePost | Schwerpunkte | Praxis | Menue | LeistungenPost | Leistungen | Kontakt | Interessantes | Impressum | Home | Footer | BlogPost | User | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Blog | Anfahrt | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
-// Variable: BLOG_QUERY
-// Query: *[_type == "blog"]{_id, ueberschriftNavigation, text}
-export type BLOG_QUERYResult = Array<{
+// Variable: ANFAHRT_QUERY
+// Query: *[_type == "anfahrt"]{_id, ueberschriftNavigation, text}
+export type ANFAHRT_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | any;
+  ueberschriftNavigation: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -798,14 +890,38 @@ export type BLOG_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
+}>;
+// Variable: BLOG_QUERY
+// Query: *[_type == "blog"]{_id, ueberschriftNavigation, text}
+export type BLOG_QUERYResult = Array<{
+  _id: string;
+  ueberschriftNavigation: string | null;
+  text: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
 }>;
 // Variable: BLOG_POST_QUERY
 // Query: *[_type == "blogPost"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}
 export type BLOG_POST_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
-  datum: string | any;
+  ueberschrift: string | null;
+  datum: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -823,7 +939,7 @@ export type BLOG_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   bild: {
     asset?: {
       _ref: string;
@@ -835,11 +951,11 @@ export type BLOG_POST_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | any;
+  } | null;
   autor: {
     user: {
       _id: string;
-      name: string | any;
+      name: string | null;
       bild: {
         asset?: {
           _ref: string;
@@ -851,9 +967,9 @@ export type BLOG_POST_QUERYResult = Array<{
         crop?: SanityImageCrop;
         alt?: string;
         _type: "image";
-      } | any;
-    } | any;
-  } | any;
+      } | null;
+    } | null;
+  } | null;
 }>;
 // Variable: FOOTER_QUERY
 // Query: *[_type == "footer"] {_id, adresse, newsletterUeberschriift, newsletterText, oeffnungszeiten, copyright, designDevelopment}
@@ -876,9 +992,9 @@ export type FOOTER_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
-  newsletterUeberschriift: any;
-  newsletterText: any;
+  }> | null;
+  newsletterUeberschriift: null;
+  newsletterText: null;
   oeffnungszeiten: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -896,7 +1012,7 @@ export type FOOTER_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   copyright: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -914,7 +1030,7 @@ export type FOOTER_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   designDevelopment: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -932,13 +1048,13 @@ export type FOOTER_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: HOME_QUERY
 // Query: *[_type == "home"] {_id, seite, bild, logo, text, bildSektion}
 export type HOME_QUERYResult = Array<{
   _id: string;
-  seite: string | any;
+  seite: string | null;
   bild: {
     asset?: {
       _ref: string;
@@ -968,7 +1084,7 @@ export type HOME_QUERYResult = Array<{
       _key: string;
     }>;
     _type: "image";
-  } | any;
+  } | null;
   logo: {
     asset?: {
       _ref: string;
@@ -980,7 +1096,7 @@ export type HOME_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | any;
+  } | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -998,7 +1114,7 @@ export type HOME_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   bildSektion: {
     asset?: {
       _ref: string;
@@ -1028,13 +1144,13 @@ export type HOME_QUERYResult = Array<{
       _key: string;
     }>;
     _type: "image";
-  } | any;
+  } | null;
 }>;
 // Variable: IMPRESSUM_QUERY
 // Query: *[_type == "impressum"] {_id, ueberschriftNavigation, text}
 export type IMPRESSUM_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | any;
+  ueberschriftNavigation: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1052,13 +1168,13 @@ export type IMPRESSUM_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: INTERESSANTES_QUERY
 // Query: *[_type == "interessantes"]{_id, ueberschrift, textOben, textUnten}
 export type INTERESSANTES_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
+  ueberschrift: string | null;
   textOben: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1076,7 +1192,7 @@ export type INTERESSANTES_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   textUnten: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1094,14 +1210,14 @@ export type INTERESSANTES_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: INTERESSANTES_POST_QUERY
 // Query: *[_type == "blogPost"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}[0]
 export type INTERESSANTES_POST_QUERYResult = {
   _id: string;
-  ueberschrift: string | any;
-  datum: string | any;
+  ueberschrift: string | null;
+  datum: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1119,7 +1235,7 @@ export type INTERESSANTES_POST_QUERYResult = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   bild: {
     asset?: {
       _ref: string;
@@ -1131,11 +1247,11 @@ export type INTERESSANTES_POST_QUERYResult = {
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | any;
+  } | null;
   autor: {
     user: {
       _id: string;
-      name: string | any;
+      name: string | null;
       bild: {
         asset?: {
           _ref: string;
@@ -1147,16 +1263,16 @@ export type INTERESSANTES_POST_QUERYResult = {
         crop?: SanityImageCrop;
         alt?: string;
         _type: "image";
-      } | any;
-    } | any;
-  } | any;
-} | any;
+      } | null;
+    } | null;
+  } | null;
+} | null;
 // Variable: KONTAKT_QUERY
-// Query: *[_type == "kontakt"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}
+// Query: *[_type == "kontakt"] {_id, ueberschriftNavigation, textFormular, textIcons, textInstagram}
 export type KONTAKT_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | any;
-  text: Array<{
+  ueberschriftNavigation: string | null;
+  textFormular: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -1173,9 +1289,8 @@ export type KONTAKT_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
-  ueberschriftAnfahrt: string | any;
-  textAnfahrt: Array<{
+  }> | null;
+  textIcons: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -1192,13 +1307,14 @@ export type KONTAKT_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
+  textInstagram: null;
 }>;
 // Variable: LEISTUNGEN_QUERY
 // Query: *[_type == "leistungen"] {_id, ueberschrift, text}
 export type LEISTUNGEN_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1216,13 +1332,13 @@ export type LEISTUNGEN_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: LEISTUNGEN_POST_QUERY
 // Query: *[_type == "leistungenPost"] {_id, ueberschrift, text}
 export type LEISTUNGEN_POST_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1240,7 +1356,7 @@ export type LEISTUNGEN_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: MENUE_QUERY
 // Query: *[_type == "menue"] {_id, termin}
@@ -1263,24 +1379,24 @@ export type MENUE_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: NAVIGATION_QUERY
 // Query: *[defined(ueberschriftNavigation) && defined(slug)]{_id, ueberschriftNavigation, "slug": slug.current,}
 export type NAVIGATION_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: any;
-  slug: any;
+  ueberschriftNavigation: null;
+  slug: null;
 } | {
   _id: string;
-  ueberschriftNavigation: string | any;
-  slug: string | any;
+  ueberschriftNavigation: string | null;
+  slug: string | null;
 }>;
-// Variable: SCHWERPUNKTE_QUERY
-// Query: *[_type == "schwerpunkte"] {_id, ueberschriftNavigation, text}
-export type SCHWERPUNKTE_QUERYResult = Array<{
+// Variable: PRAXIS_QUERY
+// Query: *[_type == "praxis"] {_id, ueberschriftNavigation, text, galerie[]}
+export type PRAXIS_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | any;
+  ueberschriftNavigation: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1298,7 +1414,44 @@ export type SCHWERPUNKTE_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
+  galerie: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "bild";
+    _key: string;
+  }> | null;
+}>;
+// Variable: SCHWERPUNKTE_QUERY
+// Query: *[_type == "schwerpunkte"] {_id, ueberschriftNavigation, text}
+export type SCHWERPUNKTE_QUERYResult = Array<{
+  _id: string;
+  ueberschriftNavigation: string | null;
+  text: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
 }>;
 // Variable: SCHWERPUNKTE_POST_QUERY
 // Query: *[_type == "schwerpunktePost"] {_id, bild, ueberschrift, text}
@@ -1315,8 +1468,8 @@ export type SCHWERPUNKTE_POST_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | any;
-  ueberschrift: string | any;
+  } | null;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1334,13 +1487,13 @@ export type SCHWERPUNKTE_POST_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: TERMIN_QUERY
 // Query: *[_type == "termin"] {_id, ueberschrift, text}
 export type TERMIN_QUERYResult = Array<{
   _id: string;
-  ueberschrift: string | any;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1358,13 +1511,13 @@ export type TERMIN_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
 }>;
 // Variable: UEBER_MICH_QUERY
 // Query: *[_type == "uebermich"] {_id, ueberschriftNavigation, bild, text, ueberschrift, praxisText, galerie[]{    asset->{      _id,      url,}}}
 export type UEBER_MICH_QUERYResult = Array<{
   _id: string;
-  ueberschriftNavigation: string | any;
+  ueberschriftNavigation: string | null;
   bild: {
     asset?: {
       _ref: string;
@@ -1376,7 +1529,7 @@ export type UEBER_MICH_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | any;
+  } | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1394,8 +1547,8 @@ export type UEBER_MICH_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
-  ueberschrift: string | any;
+  }> | null;
+  ueberschrift: string | null;
   praxisText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1413,19 +1566,20 @@ export type UEBER_MICH_QUERYResult = Array<{
     level?: number;
     _type: "block";
     _key: string;
-  }> | any;
+  }> | null;
   galerie: Array<{
     asset: {
       _id: string;
-      url: string | any;
-    } | any;
-  }> | any;
+      url: string | null;
+    } | null;
+  }> | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "*[_type == \"anfahrt\"]{_id, ueberschriftNavigation, text}": ANFAHRT_QUERYResult;
     "*[_type == \"blog\"]{_id, ueberschriftNavigation, text}": BLOG_QUERYResult;
     "*[_type == \"blogPost\"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}": BLOG_POST_QUERYResult;
     "*[_type == \"footer\"] {_id, adresse, newsletterUeberschriift, newsletterText, oeffnungszeiten, copyright, designDevelopment}": FOOTER_QUERYResult;
@@ -1433,11 +1587,12 @@ declare module "@sanity/client" {
     "*[_type == \"impressum\"] {_id, ueberschriftNavigation, text}": IMPRESSUM_QUERYResult;
     "*[_type == \"interessantes\"]{_id, ueberschrift, textOben, textUnten}": INTERESSANTES_QUERYResult;
     "*[_type == \"blogPost\"]{_id, ueberschrift, datum, text, bild, autor {user->{  _id, name, bild,}}}[0]": INTERESSANTES_POST_QUERYResult;
-    "*[_type == \"kontakt\"] {_id, ueberschriftNavigation, text, ueberschriftAnfahrt, textAnfahrt}": KONTAKT_QUERYResult;
+    "*[_type == \"kontakt\"] {_id, ueberschriftNavigation, textFormular, textIcons, textInstagram}": KONTAKT_QUERYResult;
     "*[_type == \"leistungen\"] {_id, ueberschrift, text}": LEISTUNGEN_QUERYResult;
     "*[_type == \"leistungenPost\"] {_id, ueberschrift, text}": LEISTUNGEN_POST_QUERYResult;
     "*[_type == \"menue\"] {_id, termin}": MENUE_QUERYResult;
     "*[defined(ueberschriftNavigation) && defined(slug)]{_id, ueberschriftNavigation, \"slug\": slug.current,}": NAVIGATION_QUERYResult;
+    "*[_type == \"praxis\"] {_id, ueberschriftNavigation, text, galerie[]}": PRAXIS_QUERYResult;
     "*[_type == \"schwerpunkte\"] {_id, ueberschriftNavigation, text}": SCHWERPUNKTE_QUERYResult;
     "*[_type == \"schwerpunktePost\"] {_id, bild, ueberschrift, text}": SCHWERPUNKTE_POST_QUERYResult;
     "*[_type == \"termin\"] {_id, ueberschrift, text}": TERMIN_QUERYResult;

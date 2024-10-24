@@ -22,6 +22,15 @@ const uebermich = {
             options: { source: "ueberschriftNavigation" },
             validation: (rule) => rule.required(),
         }),
+
+        defineField({
+            name: 'reihenfolge',
+            title: 'Reihenfolge',  // Add a descriptive title for your field
+            type: 'number',       // This is the number field
+            description: 'Anordnung der Links ',
+        }),
+
+
         defineField({
             name: 'bild',
             title: 'Bild',
@@ -43,38 +52,6 @@ const uebermich = {
             type: "array",
             of: [{ type: "block" }],
         }),
-        defineField({
-            name: "ueberschrift",
-            title: "Überschrift",
-            type: "string",
-        }),
-        defineField({
-            name: "praxisText",
-            title: "Praxis Text",
-            type: "array",
-            of: [{ type: "block" }],
-        }),
-        defineField({
-            name: 'galerie',
-            title: 'Galerie',
-            type: 'array',
-            of: [{
-                name: 'bild',
-                type: 'image',
-                title: 'Bild',
-                options: {
-                    hotspot: true,
-                },
-                fields: [
-                    {
-                        name: 'alt',
-                        type: 'string',
-                        title: 'Alternative text',
-                    },
-                ],
-            },],
-        }),
-
     ],
 };
 

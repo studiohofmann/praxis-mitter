@@ -12,22 +12,23 @@ export default async function Uebermich() {
     const ueberMich = await client.fetch<UEBER_MICH_QUERYResult>(UEBER_MICH_QUERY)
     return (
         <div>
-            <div className="px-4 py-16 bg-gimblet100">
+            <div className="px-8 pt-48 pb-32 bg-norway300">
                 {ueberMich.map((philipp) => (
-                    <div key={philipp._id}>
-                        <h1 className='mb-6'>{philipp.ueberschriftNavigation}</h1>
-                        <div className='relative h-96 mb-6'>
+                    <div key={philipp._id} className='flex flex-col gap-8'>
+                        <h2>{philipp.ueberschriftNavigation}</h2>
+                        <div className='relative h-96'>
                             {philipp.bild && (
                                 <Image
                                     src={urlFor(philipp.bild).url()}
                                     alt="image"
                                     fill
                                     style={{ objectFit: 'cover' }}
-                                    className='rounded-sm'
                                 />
                             )}
                         </div>
-                        <PortableText value={philipp.text} />
+                        {philipp.text && (
+                            <PortableText value={philipp.text} />
+                        )}
                     </div>
                 ))}
             </div>

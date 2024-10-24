@@ -4,40 +4,56 @@ import { KONTAKT_QUERYResult } from '@/sanity.types'
 import { PortableText } from 'next-sanity'
 import Anfahrt from '@/components/anfahrt'
 import Formular from '@/components/formular'
-import { InstagramFilled } from '@ant-design/icons';
-import { PhoneFilled } from '@ant-design/icons'
-import { MailFilled } from '@ant-design/icons'
-import { WhatsAppOutlined } from '@ant-design/icons'
-import Link from 'next/link'
+import { InstagramOutlined, PhoneOutlined, WhatsAppOutlined } from '@ant-design/icons';
 
 export default async function Kontakt() {
     const kontakt = await client.fetch<KONTAKT_QUERYResult>(KONTAKT_QUERY)
     return (
-        <div className='bg-gimblet100'>
-            <div className="px-4 pt-16">
-                {kontakt.map((willkommen) => (
-                    <div key={willkommen._id}>
-                        <h1 className='pb-8'>{willkommen.ueberschriftNavigation}</h1>
-                        <div className='pb-8'>
-                            <PortableText value={willkommen.text} />
+        <div>
+            <div className="px-8 pt-48 pb-32 bg-norway300">
+                {kontakt.map((item) => (
+                    <div key={item._id} className='flex flex-col gap-8'>
+                        <h2>{item.ueberschriftNavigation}</h2>
+
+                        {/* FORMULAR */}
+                        {item.textFormular && (
+                            <PortableText value={item.textFormular} />
+                        )}
+                        <Formular />
+
+                        {/* ICONS */}
+                        {item.textIcons && (
+                            <PortableText value={item.textIcons} />
+                        )}
+
+                        <div className='flex flex-col gap-4 w-2/3 ml-auto'>
+                            <a href={process.env.NEXT_PUBLIC_PHONE_NUMBER as string} className='flex duration-300 ease-in-out'>
+                                <div className='flex-1'>
+                                    Anruf
+                                </div>
+                                <div className='flex-1'>
+                                    <PhoneOutlined className='text-lg rotate-90 ml-3' />
+                                </div>
+                            </a>
+                            <a href={process.env.NEXT_PUBLIC_WHATSAPP as string} target="_blank" rel="noreferrer noopener" className='flex duration-300 ease-in-out'>
+                                <div className='flex-1'>
+                                    WhatsApp
+                                </div>
+                                <div className='flex-1'>
+                                    <WhatsAppOutlined className='text-lg ml-3' />
+                                </div>
+                            </a>
+                            <a href={process.env.NEXT_PUBLIC_INSTAGRAM as string} target="_blank" rel="noreferrer noopener" className='flex duration-300 ease-in-out'>
+                                <div className='flex-1'>
+                                    Instagram
+                                </div>
+                                <div className='flex-1'>
+                                    <InstagramOutlined className='text-lg ml-3' />
+                                </div>
+                            </a>
                         </div>
                     </div>
-
                 ))}
-
-                <div className='flex flex-1 flex-col gap-3 w-1/2 mb-8'>
-                    <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2 rounded-sm shadow-md'>
-                        <PhoneFilled className='pr-3' />Anruf
-                    </Link>
-                    <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2  rounded-sm shadow-md'>
-                        <WhatsAppOutlined className='pr-3' />WhatsApp
-                    </Link>
-                    <Link href={'/'} className='bg-breakerBay300 px-3 text-neutral-700  py-2  rounded-sm shadow-md'>
-                        <InstagramFilled className='pr-3' />Instagram
-                    </Link>
-
-                </div>
-                <Formular />
             </div>
             <Anfahrt />
         </div>
