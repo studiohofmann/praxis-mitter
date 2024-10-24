@@ -12,34 +12,33 @@ export default async function SchwerpunktePost() {
 
     return (
         <div className="">
-
             {schwerpunktePost.map((schwerpunkte) => (
                 <div key={schwerpunkte._id}>
                     <div className='relative w-full h-24'>
-                        <Image
-                            src={urlFor(schwerpunkte.bild).url()}
-                            alt="image"
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            className='rounded-t-sm'
-                        />
+                        {schwerpunkte.bild && (
+                            <Image
+                                src={urlFor(schwerpunkte.bild).url() || ''}
+                                alt="image"
+                                fill
+                                style={{ objectFit: 'cover' }}
+                                className='rounded-t-sm'
+                            />
+                        )}
                     </div>
                     <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
-
                             <AccordionTrigger>
                                 {schwerpunkte.ueberschrift}
                             </AccordionTrigger>
                             <AccordionContent>
-                                <PortableText value={schwerpunkte.text} />
+                                {schwerpunkte.text && (
+                                    <PortableText value={schwerpunkte.text} />
+                                )}
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
                 </div>
             ))}
-
-
-
         </div>
     );
 }
