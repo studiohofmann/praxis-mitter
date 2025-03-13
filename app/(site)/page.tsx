@@ -15,6 +15,8 @@ async function getData() {
   }
 }
 
+
+
 export const revalidate = 0;
 
 export default async function Home() {
@@ -54,9 +56,9 @@ export default async function Home() {
       </div>
 
       {/*LEISTUNGEN*/}
-      <div className='section bg-como-200 flex flex-col gap-8'>
+      <div className='section bg-stone-200 flex flex-col gap-8'>
         <div>
-          <PortableText value={data.leistungenText || []} />
+          <PortableText value={data.leistungenText || []}  />
         </div>
       </div>
     </div>

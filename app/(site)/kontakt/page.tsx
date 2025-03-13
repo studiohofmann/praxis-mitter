@@ -35,7 +35,7 @@ export default async function Kontakt() {
       </div>
 
       {/*ANFAHRT TEXT*/}
-      <div className='section bg-como-200'>
+      <div className='section bg-neutral-200'>
         <PortableText value={data.anfahrtText || []} />
       </div>
     </div>

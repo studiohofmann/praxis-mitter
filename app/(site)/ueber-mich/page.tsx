@@ -46,7 +46,7 @@ export default async function UeberMich() {
       </div>
 
       {/*TEXT*/}
-      <div className='section bg-como-200'>
+      <div className='section bg-stone-200'>
         <PortableText value={data.text || []} />
       </div>
     </div>

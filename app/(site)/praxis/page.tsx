@@ -28,7 +28,7 @@ export default async function Praxis() {
       </div>
 
       {/*BILDER */}
-      <div className='section bg-como-200 grid grid-cols-1 gap-4'>
+      <div className='section bg-neutral-200 grid grid-cols-1 gap-4'>
         {(data.bilder ?? []).map((bild, index) => (
           <div key={index} className='relative w-full aspect-[4/3]'>
             <Image

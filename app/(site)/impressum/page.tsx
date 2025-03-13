@@ -26,7 +26,7 @@ export default async function Impressum() {
       </div>
 
       {/*IMPRESSUM TEXT*/}
-      <div className='section bg-como-200'>
+      <div className='section bg-neutral-200'>
         <PortableText value={data.impressumText || []} />
       </div>
     </div>

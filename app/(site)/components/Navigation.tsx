@@ -73,6 +73,7 @@ const Navigation = () => {
           <Logo width='100%' height='100%' fill='currentColor' />
         </Link>
         <div className='flex items-center gap-8'>
+
           {/*TERMIN BUCHEN*/}
           {kontaktData?.telefonnummer && (
             <a
