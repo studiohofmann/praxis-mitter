@@ -2,60 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /*FONTS*/
 @font-face {
-    font-family: 'Switzer';
-    src: url('/fonts/Switzer-Variable.woff2') format('woff2');
-    font-weight: 100 900;
-    font-style: normal;
+  font-family: "SourceSans3";
+  src: url("/fonts/SourceSans3-VariableFont_wght.ttf") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Switzer';
-    src: url('/fonts/Switzer-VariableItalic.woff2') format('woff2');
-    font-weight: 100 900;
-    font-style: italic;
-}
-h1 {
-    @apply text-3xl;
-}
-h2 {
-    @apply text-4xl font-bold tracking-wide;
+  font-family: "SourceSans3";
+  src: url("/fonts/SourceSans3-Italic-VariableFont_wght.ttf") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
 }
 
+h2 {
+  @apply text-5xl font-semibold;
+}
 
 /*GENERAL*/
 body {
-    @apply bg-como-300;
-    @apply font-switzer text-como-800 text-xl font-normal;
+  @apply bg-como-300;
+  @apply font-sourceSans3 text-como-800 text-xl font-normal;
 }
 button {
-    @apply px-4 py-2;
-    @apply bg-como-200;
-    @apply text-como-800 font-bold tracking-wide;
-
+  @apply px-4 py-2;
+  @apply bg-como-200;
+  @apply text-como-800 font-bold tracking-wide;
 }
 .icon {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 .section {
-    @apply px-4 py-16;
+  @apply px-4 py-16;
 }
 .footersection {
-    @apply flex flex-col gap-8;
-    @apply px-4 pt-16 pb-4;
-    @apply text-como-300 text-base tracking-wide;
-    
+  @apply flex flex-col gap-8;
+  @apply px-4 pt-16 pb-4;
+  @apply text-como-300 text-base tracking-wide;
 }
 
-/*CONTACTFORM*/  
+/*CONTACTFORM*/
 form {
-    @apply flex flex-col gap-4;
+  @apply flex flex-col gap-4;
 }
-input::placeholder, textarea::placeholder {
-    @apply text-como-300;  
+input::placeholder,
+textarea::placeholder {
+  @apply text-como-300;
 }
-input, select, textarea {
-    @apply w-full px-4 py-2;
-    @apply bg-como-200 text-como-800;
+input,
+select,
+textarea {
+  @apply w-full px-4 py-2;
+  @apply bg-como-200 text-como-800;
 }

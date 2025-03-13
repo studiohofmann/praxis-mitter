@@ -15,8 +15,6 @@ async function getData() {
   }
 }
 
-
-
 export const revalidate = 0;
 
 export default async function Home() {
@@ -27,13 +25,13 @@ export default async function Home() {
   return (
     <div>
       {/*HEROIMAGE*/}
-      <div className='relative w-full h-[20vh] aspect-[4/3]'>
-        <div className='relative flex items-center justify-center h-full w-full'>
+      <div className="relative w-full h-[20vh] aspect-[4/3]">
+        <div className="relative flex items-center justify-center h-full w-full">
           <Image
             src={data.bild ? urlFor(data.bild).url() : ""}
             alt={data.bild?.alt || "Startbild"}
             fill
-            placeholder='blur'
+            placeholder="blur"
             blurDataURL={
               data.bild
                 ? urlFor(data.bild).width(24).height(24).blur(10).url()
@@ -41,24 +39,36 @@ export default async function Home() {
             }
             quality={100}
             priority
-            className='object-cover object-bottom'
-            sizes='(max-width: 768px) 100vw,
+            className="object-cover object-bottom"
+            sizes="(max-width: 768px) 100vw,
                            (max-width: 1200px) 100vw,
-                           100vw'
+                           100vw"
           />
-          <div className='absolute inset-0 bg-darkSlateGray opacity-30' />
+          <div className="absolute inset-0 bg-darkSlateGray opacity-30" />
         </div>
       </div>
 
       {/*WILLKOMMEN*/}
-      <div className='section'>
+      <div className="section">
         <PortableText value={data.willkommenText || []} />
       </div>
 
       {/*LEISTUNGEN*/}
-      <div className='section bg-stone-200 flex flex-col gap-8'>
+      <div className="section bg-stone-200 flex flex-col gap-8">
         <div>
-          <PortableText value={data.leistungenText || []}  />
+          <PortableText
+            value={data.leistungenText || []}
+            components={{
+              list: {
+                bullet: ({ children }) => (
+                  <ul className="list-disc pl-5">{children}</ul>
+                ),
+              },
+              listItem: {
+                bullet: ({ children }) => <li>{children}</li>,
+              },
+            }}
+          />
         </div>
       </div>
     </div>
