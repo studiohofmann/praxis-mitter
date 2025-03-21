@@ -25,7 +25,7 @@ export default async function Home() {
   return (
     <div>
       {/*HEROIMAGE*/}
-      <div className="relative w-full h-[20vh] aspect-[4/3]">
+      <div className="relative w-full h-[25vh] md:h-[33vh] xl:h-[50vh] aspect-[4/3]">
         <div className="relative flex items-center justify-center h-full w-full">
           <Image
             src={data.bild ? urlFor(data.bild).url() : ""}
@@ -39,7 +39,7 @@ export default async function Home() {
             }
             quality={100}
             priority
-            className="object-cover object-bottom"
+            className="object-cover object-center 2xl:px-64"
             sizes="(max-width: 768px) 100vw,
                            (max-width: 1200px) 100vw,
                            100vw"
@@ -47,21 +47,19 @@ export default async function Home() {
           <div className="absolute inset-0 bg-darkSlateGray opacity-30" />
         </div>
       </div>
-
       {/*WILLKOMMEN*/}
       <div className="section">
         <PortableText value={data.willkommenText || []} />
       </div>
-
       {/*LEISTUNGEN*/}
-      <div className="section bg-stone-200 flex flex-col gap-8">
+      <div className="section bg-sundance-300 flex flex-col gap-8">
         <div>
           <PortableText
             value={data.leistungenText || []}
             components={{
               list: {
                 bullet: ({ children }) => (
-                  <ul className="list-disc pl-5">{children}</ul>
+                  <div className="list-disc">{children}</div>
                 ),
               },
               listItem: {

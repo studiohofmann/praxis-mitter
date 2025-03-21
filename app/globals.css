@@ -17,28 +17,42 @@
 }
 
 h2 {
-  @apply text-5xl font-semibold;
+  @apply text-4xl font-bold;
 }
 
 /*GENERAL*/
 body {
-  @apply bg-como-300;
+  @apply bg-stone-200;
   @apply font-sourceSans3 text-como-800 text-xl font-normal;
 }
+a {
+  @apply text-como-300 hover:text-como-200;
+  @apply transition-all duration-200 ease-in-out;
+}
+/* Add this for active links */
+a.active {
+  @apply text-como-200 font-bold;
+  @apply relative;
+}
+
 button {
   @apply px-4 py-2;
+  @apply bg-como-300 hover:bg-como-200;
+  @apply transition-all duration-200 ease-in-out;
+  @apply text-como-800  font-bold tracking-wide;
+}
+a.active button {
   @apply bg-como-200;
-  @apply text-como-800 font-bold tracking-wide;
 }
 .icon {
   @apply text-2xl;
 }
 .section {
-  @apply px-4 py-16;
+  @apply px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64 py-16;
 }
 .footersection {
-  @apply flex flex-col gap-8;
-  @apply px-4 pt-16 pb-4;
+  @apply px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64 pt-16 pb-4;
+  @apply bg-como-800;
   @apply text-como-300 text-base tracking-wide;
 }
 
@@ -55,4 +69,6 @@ select,
 textarea {
   @apply w-full px-4 py-2;
   @apply bg-como-200 text-como-800;
+  @apply rounded-none !important; /* Remove rounded corners */
+  @apply focus:outline-none focus:ring-0 !important; /* Remove blue focus outline */
 }

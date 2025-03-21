@@ -22,37 +22,37 @@ async function Icons() {
   if (!data) return null;
 
   return (
-    <div className='flex gap-8 justify-center'>
+    <div className="flex gap-8 justify-center">
       {data.email && (
-        <a href={`mailto:${data.email}`} aria-label='Email'>
-          <MailFilled className='icon' />
+        <a href={`mailto:${data.email}`} aria-label="Email">
+          <MailFilled className="icon" />
         </a>
       )}
 
       {data.telefonnummer && (
-        <a href={`tel:${data.telefonnummer}`} aria-label='Telefon'>
-          <PhoneFilled className='icon' />
+        <a href={`tel:${data.telefonnummer}`} aria-label="Telefon">
+          <PhoneFilled className="icon" />
         </a>
       )}
       {data.telefonnummer && (
         <a
           href={`https://wa.me/${data.telefonnummer.replace(/\s+/g, "")}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='WhatsApp'
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
         >
-          <WhatsAppOutlined className='icon' />
+          <WhatsAppOutlined className="icon" />
         </a>
       )}
 
       {data.instagram && (
         <a
           href={`https://instagram.com/${data.instagram.replace("@", "")}`}
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='Instagram'
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
         >
-          <InstagramFilled className='icon' />
+          <InstagramFilled className="icon" />
         </a>
       )}
     </div>

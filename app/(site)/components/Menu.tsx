@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { MENU_QUERY } from "@/sanity/lib/queries";
 
@@ -14,6 +15,7 @@ interface MenuTypes {
 
 const Menu = () => {
   const [pages, setPages] = useState<MenuTypes[]>([]);
+  const pathname = usePathname(); // Get current path
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,12 +31,22 @@ const Menu = () => {
   }, []);
 
   return (
-    <nav className='flex flex-col md:flex-row md:space-x-4'>
+    <nav className="flex flex-col gap-2">
       {pages.map((page, index) => (
         <div key={index}>
-          <Link href={`/${page.slug.current}`}>{page.menu}</Link>
+          <Link
+            href={`/${page.slug.current}`}
+            className={pathname === `/${page.slug.current}` ? "active" : ""}
+          >
+            {page.menu}
+          </Link>
         </div>
       ))}
+      <div>
+        <Link href="/" className={pathname === "/" ? "active" : ""}>
+          Home
+        </Link>
+      </div>
     </nav>
   );
 };

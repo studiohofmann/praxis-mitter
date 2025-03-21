@@ -22,60 +22,67 @@ export default async function Footer() {
   if (!data) return null;
 
   return (
-    <div className='footersection bg-como-800'>
-      {/*TERMIN*/}
-      <div className='flex flex-col gap-4'>
-        <div className='text-center'>
-          <PortableText value={data.terminText || []} />
+    <div className="footersection flex flex-col gap-8 md:gap-16">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16">
+        {/*TERMIN*/}
+        <div className="flex flex-col gap-4">
+          <div className="text-center">
+            <PortableText value={data.terminText || []} />
+          </div>
+
+          {/*CONTACT ICONS*/}
+          <Icons />
         </div>
 
-        {/*CONTACT ICONS*/}
-        <Icons />
-      </div>
+        <hr className="border-t border-como-300 md:hidden" />
 
-      <hr className='border-t border-como-300' />
-
-      {/*ANERKENNUNG*/}
-      <div className='flex flex-col gap-4'>
-        <div className='text-center'>
-          <PortableText value={data.anerkennungText || []} />
+        {/*ANERKENNUNG*/}
+        <div className="flex flex-col gap-4">
+          <div className="text-center">
+            <PortableText value={data.anerkennungText || []} />
+          </div>
+          <div className="flex justify-center gap-8">
+            <a
+              href="https://emr.ch/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Emr width="100%" height="36" fill="currentColor" />
+            </a>
+            <a
+              href="https://nvs.swiss/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Nvs width="100%" height="36" fill="currentColor" />
+            </a>
+          </div>
         </div>
-        <div className='flex justify-center gap-8'>
-          <a
-            href='https://example.com/emr'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='w-full'
-          >
-            <Emr width='100%' height='100%' fill='currentColor' />
-          </a>
-          <a
-            href='https://example.com/emr'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='w-full'
-          >
-            <Nvs width='100%' height='100%' fill='currentColor' />
-          </a>
-        </div>
-      </div>
 
-      <hr className='border-t border-como-300' />
+        <hr className="border-t border-como-300 md:hidden" />
 
-      <div className='flex justify-between pb-8'>
         {/*MENU*/}
-        <div>
+        <div className="text-center">
           <b>Menü</b>
           <Menu />
         </div>
-        {/*ADRESSE*/}
-        <div>
-          <PortableText value={data.adresse || []} />
-        </div>
-      </div>
 
+        <hr className="border-t border-como-300 md:hidden" />
+
+        {/*ANSCHRIFT*/}
+        <a
+          href="https://www.openstreetmap.org/way/227581772"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-center"
+        >
+          <PortableText value={data.adresse || []} />
+        </a>
+      </div>
       {/*COPYRIGHT*/}
-      <div className='flex justify-center'>
+      <div className="flex justify-center">
         {new Date().getFullYear()}
         &nbsp;
         <div>
