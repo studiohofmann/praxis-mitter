@@ -4,14 +4,19 @@ import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+// Define an interface for the Icon prototype extension
+interface IconDefaultExtended extends L.Icon.Default {
+  _getIconUrl?: () => string;
+}
+
 const Map = () => {
   // Create a unique ID for each map instance
   const mapId = useRef(`map-${Math.random().toString(36).substring(2, 9)}`);
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    // Fix the missing marker icon issue
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    // Fix the missing marker icon issue - use the interface instead of any
+    delete (L.Icon.Default.prototype as IconDefaultExtended)._getIconUrl;
 
     L.Icon.Default.mergeOptions({
       iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
