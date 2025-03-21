@@ -6,34 +6,21 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
 
-// Fetch data for metadata
-async function getMetaData() {
+export const generateMetadata: () => Promise<Metadata> = async () => {
+  // You can fetch data here if needed for dynamic titles
+  return {
+    title: "Über mich | Praxis Mitter",
+  };
+};
+
+async function getData() {
   try {
     const data = await client.fetch<Uebermichtype[]>(UEBERMICH_QUERY);
     return data[0];
   } catch (error) {
-    console.error("Error fetching Über mich Data for metadata:", error);
+    console.error("Error fetching Über mich Data:", error);
     return null;
   }
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const metaData = await getMetaData();
-
-  return {
-    title: metaData?.menu
-      ? `${metaData.menu} | Praxis Mitter`
-      : "Über Mich | Praxis Mitter",
-    description:
-      typeof metaData?.text === "string"
-        ? metaData.text
-        : "Informationen über Philipp Mitter und seine Naturheilpraxis",
-  };
-}
-
-// Reuse the same function for component data
-async function getData() {
-  return getMetaData();
 }
 
 export const revalidate = 0;

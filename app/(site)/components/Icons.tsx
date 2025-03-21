@@ -36,7 +36,12 @@ async function Icons() {
       )}
       {data.telefonnummer && (
         <a
-          href={`https://wa.me/${data.telefonnummer.replace(/\s+/g, "")}`}
+          href={`https://wa.me/${
+            data.telefonnummer
+              .replace(/\s+/g, "") // Remove all whitespace
+              .replace(/^0/, "41") // Replace leading 0 with country code (41 for Switzerland)
+              .replace(/^\+/, "") // Remove any leading + sign
+          }`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"

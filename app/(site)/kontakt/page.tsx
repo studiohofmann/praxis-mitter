@@ -7,34 +7,21 @@ import Icons from "../components/Icons";
 import MapWrapper from "../components/MapWrapper";
 import { Metadata } from "next";
 
-// Fetch data for metadata
-async function getMetaData() {
+export const generateMetadata: () => Promise<Metadata> = async () => {
+  // You can fetch data here if needed for dynamic titles
+  return {
+    title: "Kontakt | Praxis Mitter",
+  };
+};
+
+async function getData() {
   try {
     const data = await client.fetch<Kontakttype[]>(KONTAKT_QUERY);
     return data[0];
   } catch (error) {
-    console.error("Error fetching Kontakt Data for metadata:", error);
+    console.error("Error fetching Kontakt Data:", error);
     return null;
   }
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const metaData = await getMetaData();
-
-  return {
-    title: metaData?.menu
-      ? `${metaData.menu} | Praxis Mitter`
-      : "Kontakt | Praxis Mitter",
-    description:
-      typeof metaData?.iconsText === "string"
-        ? metaData.iconsText
-        : "Kontaktieren Sie die Praxis Mitter",
-  };
-}
-
-// Reuse the same function for component data
-async function getData() {
-  return getMetaData();
 }
 
 export default async function Kontakt() {

@@ -11,10 +11,10 @@ export default function Contactform() {
 
   if (state.succeeded) {
     return (
-      <h3 className="italic">
-        Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich
+      <p className="font-bold pt-8">
+        Vielen Dank für Ihre Nachricht! Ich werden mich so schnell wie möglich
         bei Ihnen melden.
-      </h3>
+      </p>
     );
   }
 
