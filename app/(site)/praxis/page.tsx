@@ -6,10 +6,32 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
 
-export const generateMetadata: () => Promise<Metadata> = async () => {
-  // You can fetch data here if needed for dynamic titles
+// Helper function to extract plain text from Portable Text
+const extractTextFromPortableText = (portableText: any[] = []) => {
+  const firstBlock = portableText.find((block) => block._type === "block");
+  const textSpans: string[] =
+    firstBlock?.children
+      ?.filter(
+        (child: { _type: string }): child is { _type: "span"; text: string } =>
+          child._type === "span"
+      )
+      ?.map((span: { text: string }) => span.text) || [];
+
+  return textSpans.join(" ");
+};
+
+// Simplified metadata generation
+export const generateMetadata = async (): Promise<Metadata> => {
+  const data = await getData();
+
+  // Extract description from portable text (with 160 char limit)
+  const fullText = data?.text ? extractTextFromPortableText(data.text) : "";
+  const description =
+    fullText.substring(0, 160) + (fullText.length > 160 ? "..." : "");
+
   return {
-    title: "Praxis | Praxis Mitter",
+    title: `${data?.menu || "Praxis"} | Praxis Mitter`,
+    description: description || "Informationen zur Praxis Mitter",
   };
 };
 

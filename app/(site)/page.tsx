@@ -4,6 +4,41 @@ import { Landingpage as Landingpagetype } from "@/sanity.types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
+import { Metadata } from "next";
+
+// Helper function to extract plain text from Portable Text
+const extractTextFromPortableText = (portableText: any[] = []) => {
+  const firstBlock = portableText.find((block) => block._type === "block");
+  const textSpans: string[] =
+    firstBlock?.children
+      ?.filter((child: { _type: string }) => child._type === "span")
+      ?.map((span: { text: string }) => span.text) || [];
+
+  return textSpans.join(" ");
+};
+
+// Simplified metadata generation for landing page
+export const generateMetadata = async (): Promise<Metadata> => {
+  const data = await getData();
+
+  // Extract description from portable text (with 160 char limit)
+  const fullText = data?.willkommenText
+    ? extractTextFromPortableText(data.willkommenText)
+    : "";
+  const description =
+    fullText.substring(0, 160) + (fullText.length > 160 ? "..." : "");
+
+  return {
+    title: "Praxis Mitter", // Simple title for home page
+    description:
+      description || "Naturheilpraxis für eine gesunde Lebensführung",
+    openGraph: {
+      images: data?.bild
+        ? [urlFor(data.bild).width(1200).height(630).url()]
+        : [],
+    },
+  };
+};
 
 async function getData() {
   try {
