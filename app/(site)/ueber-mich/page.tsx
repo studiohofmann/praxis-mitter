@@ -6,16 +6,27 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
 
+// Define the type for Portable Text blocks
+type PortableTextBlock = {
+  _type: "block";
+  children?: Array<{
+    _type: "span";
+    text?: string;
+  }>;
+};
+
 // Helper function to extract plain text from Portable Text
-const extractTextFromPortableText = (portableText: any[] = []) => {
+const extractTextFromPortableText = (
+  portableText: PortableTextBlock[] = []
+) => {
   const firstBlock = portableText.find((block) => block._type === "block");
   const textSpans: string[] =
     firstBlock?.children
       ?.filter(
-        (child: { _type: string }): child is { _type: "span"; text: string } =>
+        (child): child is { _type: "span"; text: string } =>
           child._type === "span"
       )
-      ?.map((span: { text: string }) => span.text) || [];
+      ?.map((span) => span.text) || [];
 
   return textSpans.join(" ");
 };
@@ -36,7 +47,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-async function getData() {
+// Fetch data from Sanity
+async function getData(): Promise<Uebermichtype | null> {
   try {
     const data = await client.fetch<Uebermichtype[]>(UEBERMICH_QUERY);
     return data[0];
