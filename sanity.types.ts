@@ -68,6 +68,26 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type EmailSignature = {
+  _id: string;
+  _type: "emailSignature";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  icon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type Footer = {
   _id: string;
   _type: "footer";
@@ -467,7 +487,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Footer | Impressum | Kontakt | Praxis | UeberMich | Landingpage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | EmailSignature | Footer | Impressum | Kontakt | Praxis | UeberMich | Landingpage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: MENU_QUERY
@@ -529,8 +549,9 @@ export type LANDINGPAGE_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: UEBERMICH_QUERY
-// Query: *[_type == "ueberMich"] {bild, text}
+// Query: *[_type == "ueberMich"] {menu, bild, text}
 export type UEBERMICH_QUERYResult = Array<{
+  menu: string | null;
   bild: {
     asset?: {
       _ref: string;
@@ -563,8 +584,9 @@ export type UEBERMICH_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: PRAXIS_QUERY
-// Query: *[_type == "praxis"] {bilder[], text}
+// Query: *[_type == "praxis"] {menu, bilder[], text}
 export type PRAXIS_QUERYResult = Array<{
+  menu: string | null;
   bilder: Array<{
     asset?: {
       _ref: string;
@@ -598,8 +620,9 @@ export type PRAXIS_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: KONTAKT_QUERY
-// Query: *[_type == "kontakt"] {iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}
+// Query: *[_type == "kontakt"] {menu, iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}
 export type KONTAKT_QUERYResult = Array<{
+  menu: string | null;
   iconsText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -660,8 +683,9 @@ export type KONTAKT_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: IMPRESSUM_QUERY
-// Query: *[_type == "impressum"] {verantwortungText, impressumText}
+// Query: *[_type == "impressum"] {menu, verantwortungText, impressumText}
 export type IMPRESSUM_QUERYResult = Array<{
+  menu: string | null;
   verantwortungText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -782,10 +806,10 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type in [\"ueberMich\", \"praxis\", \"kontakt\", \"impressum\"]] | order(sortOrder asc) {menu, slug}": MENU_QUERYResult;
     "*[_type == \"landingpage\"] {bild, willkommenText, leistungenText}": LANDINGPAGE_QUERYResult;
-    "*[_type == \"ueberMich\"] {bild, text}": UEBERMICH_QUERYResult;
-    "*[_type == \"praxis\"] {bilder[], text}": PRAXIS_QUERYResult;
-    "*[_type == \"kontakt\"] {iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}": KONTAKT_QUERYResult;
-    "*[_type == \"impressum\"] {verantwortungText, impressumText}": IMPRESSUM_QUERYResult;
+    "*[_type == \"ueberMich\"] {menu, bild, text}": UEBERMICH_QUERYResult;
+    "*[_type == \"praxis\"] {menu, bilder[], text}": PRAXIS_QUERYResult;
+    "*[_type == \"kontakt\"] {menu, iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}": KONTAKT_QUERYResult;
+    "*[_type == \"impressum\"] {menu, verantwortungText, impressumText}": IMPRESSUM_QUERYResult;
     "*[_type == \"footer\"] {terminText, anerkennungText, adresse, copyright}": FOOTER_QUERYResult;
   }
 }
