@@ -24,10 +24,15 @@ const extractTextFromPortableText = (
   const textSpans: string[] =
     firstBlock?.children
       ?.filter(
-        (child): child is { _type: "span"; text: string } =>
+        (child): child is { _type: "span"; text: string; marks?: string[] } =>
           child._type === "span"
       )
-      ?.map((span) => span.text || "") || [];
+      ?.map((span) => {
+        if (span.marks?.includes("strong")) {
+          return `<strong>${span.text}</strong>`;
+        }
+        return span.text;
+      }) || [];
 
   return textSpans.join(" ");
 };
@@ -69,32 +74,25 @@ export default async function Kontakt() {
 
   return (
     <div>
-      <div className="section bg-neutral-200 flex flex-col xl:flex-row gap-8 xl:gap-16">
-        <div className="flex flex-col gap-8 xl:flex-1">
+      <div className="section !gap-8 bg-neutral-200 xl:flex-row xl:gap-16">
+        <div className="blueLinks flex flex-col gap-4 xl:flex-1">
           {/*KONTAKT TEXT*/}
-          <div className="md:w-2/3 xl:w-full">
-            <PortableText value={data.iconsText || []} />
-          </div>
-          <div className="md:flex md:gap-8">
-            <Icons />
-          </div>
-          <div className="md:w-2/3 xl:w-full">
-            <PortableText value={data.formularText || []} />
-          </div>
+          <h2>{data.iconsUeberschrift}</h2>
+          <PortableText value={data.iconsText || []} />
+          <Icons />
         </div>
         {/*KONTAKTFORM*/}
-        <div className="xl:flex-1">
+        <div className="flex flex-col gap-4 xl:flex-1">
+          <h2>{data.formularUeberschrift}</h2>
+          <PortableText value={data.formularText || []} />
           <Contactform />
         </div>
       </div>
       {/*ANFAHRT TEXT*/}
-      <div className="section bg-sundance-300 flex flex-col gap-8">
-        <div className="md:w-2/3">
-          <PortableText value={data.anfahrtText || []} />
-        </div>
-        <div className="-mx-4 md:-mx-8 lg:-mx-16 xl:-mx-32 2xl:-mx-8 2xl:px-0 -mb-16">
-          <MapWrapper />
-        </div>
+      <div className="section bg-sundance-300">
+        <h2>{data.anfahrtUeberschrift}</h2>
+        <PortableText value={data.anfahrtText || []} />
+        <MapWrapper />
       </div>
     </div>
   );

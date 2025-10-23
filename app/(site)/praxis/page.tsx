@@ -63,11 +63,11 @@ export default async function Praxis() {
   if (!data) return null;
 
   return (
-    <div className="section flex flex-col gap-8">
+    <div className="section">
       {/*TEXT */}
-      <div className="md:w-2/3">
-        <PortableText value={data.text || []} />
-      </div>
+
+      <h2>{data.ueberschrift}</h2>
+      <PortableText value={data.text || []} />
 
       {/*BILDER */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 ">

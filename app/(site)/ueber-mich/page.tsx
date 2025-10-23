@@ -66,9 +66,9 @@ export default async function UeberMich() {
   if (!data) return null;
 
   return (
-    <div>
+    <div className="section">
       {/*IMAGE*/}
-      <div className="relative w-full h-[50vh] md:h-[75vh] aspect-[4/3]">
+      <div className="relative w-full h-[50vh]">
         <Image
           src={data.bild ? urlFor(data.bild).url() : ""}
           alt={data.bild?.alt || "Startbild"}
@@ -89,9 +89,9 @@ export default async function UeberMich() {
       </div>
 
       {/*TEXT*/}
-      <div className="section">
-        <PortableText value={data.text || []} />
-      </div>
+
+      <h2>{data.ueberschrift}</h2>
+      <PortableText value={data.text || []} />
     </div>
   );
 }

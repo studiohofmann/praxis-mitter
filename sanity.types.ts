@@ -13,61 +13,6 @@
  */
 
 // Source: schema.json
-export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
-
-export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
-
-export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
-};
-
-export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
-
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
-
 export type EmailSignature = {
   _id: string;
   _type: "emailSignature";
@@ -82,6 +27,7 @@ export type EmailSignature = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -94,6 +40,7 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  terminUeberschrift?: string;
   terminText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -112,6 +59,7 @@ export type Footer = {
     _type: "block";
     _key: string;
   }>;
+  anerkennungUeberschrift?: string;
   anerkennungText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -130,6 +78,7 @@ export type Footer = {
     _type: "block";
     _key: string;
   }>;
+  adresseUeberschrift?: string;
   adresse?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -177,6 +126,7 @@ export type Impressum = {
   sortOrder?: number;
   menu?: string;
   slug?: Slug;
+  verantwortungUeberschrift?: string;
   verantwortungText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -195,6 +145,7 @@ export type Impressum = {
     _type: "block";
     _key: string;
   }>;
+  impressumUeberschrift?: string;
   impressumText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -224,6 +175,7 @@ export type Kontakt = {
   sortOrder?: number;
   menu?: string;
   slug?: Slug;
+  iconsUeberschrift?: string;
   iconsText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -246,6 +198,7 @@ export type Kontakt = {
   telefonnummer?: string;
   email?: string;
   instagram?: string;
+  formularUeberschrift?: string;
   formularText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -264,6 +217,7 @@ export type Kontakt = {
     _type: "block";
     _key: string;
   }>;
+  anfahrtUeberschrift?: string;
   anfahrtText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -293,6 +247,7 @@ export type Praxis = {
   sortOrder?: number;
   menu?: string;
   slug?: Slug;
+  ueberschrift?: string;
   text?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -318,6 +273,7 @@ export type Praxis = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -342,11 +298,13 @@ export type UeberMich = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   };
+  ueberschrift?: string;
   text?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -381,12 +339,14 @@ export type Landingpage = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   };
-  willkommenText?: Array<{
+  einleitungUeberschrift?: string;
+  einleitungText?: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -404,6 +364,7 @@ export type Landingpage = {
     _type: "block";
     _key: string;
   }>;
+  leistungenUeberschrift?: string;
   leistungenText?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -424,12 +385,30 @@ export type Landingpage = {
   }>;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+export type SanityImagePaletteSwatch = {
+  _type: "sanity.imagePaletteSwatch";
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
+
+export type SanityImagePalette = {
+  _type: "sanity.imagePalette";
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
+
+export type SanityImageDimensions = {
+  _type: "sanity.imageDimensions";
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageHotspot = {
@@ -438,6 +417,36 @@ export type SanityImageHotspot = {
   y?: number;
   height?: number;
   width?: number;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityFileAsset = {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
 };
 
 export type SanityImageAsset = {
@@ -463,13 +472,6 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
-
 export type SanityImageMetadata = {
   _type: "sanity.imageMetadata";
   location?: Geopoint;
@@ -481,13 +483,27 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
+};
+
 export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | EmailSignature | Footer | Impressum | Kontakt | Praxis | UeberMich | Landingpage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
+};
+
+export type AllSanitySchemaTypes = EmailSignature | Footer | Impressum | Kontakt | Praxis | UeberMich | Landingpage | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: MENU_QUERY
@@ -497,7 +513,7 @@ export type MENU_QUERYResult = Array<{
   slug: Slug | null;
 }>;
 // Variable: LANDINGPAGE_QUERY
-// Query: *[_type == "landingpage"] {bild, willkommenText, leistungenText}
+// Query: *[_type == "landingpage"] {bild, einleitungUeberschrift, einleitungText, leistungenUeberschrift, leistungenText}
 export type LANDINGPAGE_QUERYResult = Array<{
   bild: {
     asset?: {
@@ -506,12 +522,14 @@ export type LANDINGPAGE_QUERYResult = Array<{
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   } | null;
-  willkommenText: Array<{
+  einleitungUeberschrift: string | null;
+  einleitungText: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -529,6 +547,7 @@ export type LANDINGPAGE_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
+  leistungenUeberschrift: string | null;
   leistungenText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -549,7 +568,7 @@ export type LANDINGPAGE_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: UEBERMICH_QUERY
-// Query: *[_type == "ueberMich"] {menu, bild, text}
+// Query: *[_type == "ueberMich"] {menu, bild, ueberschrift, text}
 export type UEBERMICH_QUERYResult = Array<{
   menu: string | null;
   bild: {
@@ -559,11 +578,13 @@ export type UEBERMICH_QUERYResult = Array<{
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
   } | null;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -584,7 +605,7 @@ export type UEBERMICH_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: PRAXIS_QUERY
-// Query: *[_type == "praxis"] {menu, bilder[], text}
+// Query: *[_type == "praxis"] {menu, bilder[], ueberschrift, text}
 export type PRAXIS_QUERYResult = Array<{
   menu: string | null;
   bilder: Array<{
@@ -594,12 +615,14 @@ export type PRAXIS_QUERYResult = Array<{
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
     _key: string;
   }> | null;
+  ueberschrift: string | null;
   text: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -620,9 +643,10 @@ export type PRAXIS_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: KONTAKT_QUERY
-// Query: *[_type == "kontakt"] {menu, iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}
+// Query: *[_type == "kontakt"] {menu,iconsUeberschrift, iconsText, navigationText, telefonnummer, email, instagram, formularUeberschrift, formularText, anfahrtUeberschrift, anfahrtText}
 export type KONTAKT_QUERYResult = Array<{
   menu: string | null;
+  iconsUeberschrift: string | null;
   iconsText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -645,6 +669,7 @@ export type KONTAKT_QUERYResult = Array<{
   telefonnummer: string | null;
   email: string | null;
   instagram: string | null;
+  formularUeberschrift: string | null;
   formularText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -663,6 +688,7 @@ export type KONTAKT_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
+  anfahrtUeberschrift: string | null;
   anfahrtText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -683,9 +709,10 @@ export type KONTAKT_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: IMPRESSUM_QUERY
-// Query: *[_type == "impressum"] {menu, verantwortungText, impressumText}
+// Query: *[_type == "impressum"] {menu, verantwortungUeberschrift, verantwortungText, impressumUeberschrift, impressumText}
 export type IMPRESSUM_QUERYResult = Array<{
   menu: string | null;
+  verantwortungUeberschrift: string | null;
   verantwortungText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -704,6 +731,7 @@ export type IMPRESSUM_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
+  impressumUeberschrift: string | null;
   impressumText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -724,8 +752,9 @@ export type IMPRESSUM_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: FOOTER_QUERY
-// Query: *[_type == "footer"] {terminText, anerkennungText, adresse, copyright}
+// Query: *[_type == "footer"] {terminUeberschrift, terminText, anerkennungUeberschrift, anerkennungText, adresseUeberschrift, adresse, copyright}
 export type FOOTER_QUERYResult = Array<{
+  terminUeberschrift: string | null;
   terminText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -744,6 +773,7 @@ export type FOOTER_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
+  anerkennungUeberschrift: string | null;
   anerkennungText: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -762,6 +792,7 @@ export type FOOTER_QUERYResult = Array<{
     _type: "block";
     _key: string;
   }> | null;
+  adresseUeberschrift: string | null;
   adresse: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -805,11 +836,11 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type in [\"ueberMich\", \"praxis\", \"kontakt\", \"impressum\"]] | order(sortOrder asc) {menu, slug}": MENU_QUERYResult;
-    "*[_type == \"landingpage\"] {bild, willkommenText, leistungenText}": LANDINGPAGE_QUERYResult;
-    "*[_type == \"ueberMich\"] {menu, bild, text}": UEBERMICH_QUERYResult;
-    "*[_type == \"praxis\"] {menu, bilder[], text}": PRAXIS_QUERYResult;
-    "*[_type == \"kontakt\"] {menu, iconsText, navigationText, telefonnummer, email, instagram, formularText, anfahrtText}": KONTAKT_QUERYResult;
-    "*[_type == \"impressum\"] {menu, verantwortungText, impressumText}": IMPRESSUM_QUERYResult;
-    "*[_type == \"footer\"] {terminText, anerkennungText, adresse, copyright}": FOOTER_QUERYResult;
+    "*[_type == \"landingpage\"] {bild, einleitungUeberschrift, einleitungText, leistungenUeberschrift, leistungenText}": LANDINGPAGE_QUERYResult;
+    "*[_type == \"ueberMich\"] {menu, bild, ueberschrift, text}": UEBERMICH_QUERYResult;
+    "*[_type == \"praxis\"] {menu, bilder[], ueberschrift, text}": PRAXIS_QUERYResult;
+    "*[_type == \"kontakt\"] {menu,iconsUeberschrift, iconsText, navigationText, telefonnummer, email, instagram, formularUeberschrift, formularText, anfahrtUeberschrift, anfahrtText}": KONTAKT_QUERYResult;
+    "*[_type == \"impressum\"] {menu, verantwortungUeberschrift, verantwortungText, impressumUeberschrift, impressumText}": IMPRESSUM_QUERYResult;
+    "*[_type == \"footer\"] {terminUeberschrift, terminText, anerkennungUeberschrift, anerkennungText, adresseUeberschrift, adresse, copyright}": FOOTER_QUERYResult;
   }
 }

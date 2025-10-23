@@ -31,22 +31,25 @@ const Menu = () => {
   }, []);
 
   return (
-    <nav className="flex flex-col gap-2">
+    <nav>
+      <div>
+        <Link
+          href="/"
+          className={`!text-sm ${pathname === "/" ? "active" : ""}`}
+        >
+          Home
+        </Link>
+      </div>
       {pages.map((page, index) => (
         <div key={index}>
           <Link
             href={`/${page.slug.current}`}
-            className={pathname === `/${page.slug.current}` ? "active" : ""}
+            className={`!text-sm ${pathname === `/${page.slug.current}` ? "active" : ""}`}
           >
             {page.menu}
           </Link>
         </div>
       ))}
-      <div>
-        <Link href="/" className={pathname === "/" ? "active" : ""}>
-          Home
-        </Link>
-      </div>
     </nav>
   );
 };

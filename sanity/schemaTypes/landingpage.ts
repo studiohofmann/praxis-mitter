@@ -32,10 +32,20 @@ const landingpage = {
       ],
     }),
     defineField({
-      name: "willkommenText",
-      title: "Willkommen Text",
+      name: "einleitungUeberschrift",
+      title: "Einleitung Überschrift",
+      type: "string",
+    }),
+    defineField({
+      name: "einleitungText",
+      title: "Einleitung Text",
       type: "array",
       of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "leistungenUeberschrift",
+      title: "Leistungen Überschrift",
+      type: "string",
     }),
     defineField({
       name: "leistungenText",

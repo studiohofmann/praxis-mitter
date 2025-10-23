@@ -11,7 +11,7 @@ export default function Contactform() {
 
   if (state.succeeded) {
     return (
-      <p className="font-bold pt-8">
+      <p className="font-bold pt-4">
         Vielen Dank für Ihre Nachricht! Ich werden mich so schnell wie möglich
         bei Ihnen melden.
       </p>
@@ -20,7 +20,7 @@ export default function Contactform() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="formfield relative">
+      <div className="relative">
         <select
           id="anrede"
           name="anrede"
@@ -40,7 +40,7 @@ export default function Contactform() {
         </div>
         <ValidationError prefix="Anrede" field="anrede" errors={state.errors} />
       </div>
-      <div className="formfield">
+      <div>
         <input
           id="vorname"
           type="text"
@@ -50,11 +50,11 @@ export default function Contactform() {
         />
         <ValidationError prefix="Name" field="name" errors={state.errors} />
       </div>
-      <div className="formfield">
+      <div>
         <input id="name" type="text" name="name" placeholder="Name" required />
         <ValidationError prefix="Name" field="name" errors={state.errors} />
       </div>
-      <div className="formfield">
+      <div>
         <input
           id="email"
           type="email"
@@ -83,7 +83,7 @@ export default function Contactform() {
         className="flex gap-4 justify-center items-center"
       >
         senden
-        <ArrowRightOutlined className="text-2xl" />
+        <ArrowRightOutlined className="icon" />
       </button>
       <ValidationError errors={state.errors} />
     </form>

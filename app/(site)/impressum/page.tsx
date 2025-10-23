@@ -66,12 +66,14 @@ export default async function Impressum() {
   return (
     <div>
       {/*VERANTWORTUNG TEXT*/}
-      <div className="section">
+      <div className="section blueLinks">
+        <h2>{data.verantwortungUeberschrift}</h2>
         <PortableText value={data.verantwortungText || []} />
       </div>
 
       {/*IMPRESSUM TEXT*/}
-      <div className="section bg-sundance-300">
+      <div className="section bg-sundance-300 blueLinks">
+        <h2>{data.impressumUeberschrift}</h2>
         <PortableText value={data.impressumText || []} />
       </div>
     </div>

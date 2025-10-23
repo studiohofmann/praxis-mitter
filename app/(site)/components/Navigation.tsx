@@ -22,6 +22,7 @@ const Navigation = () => {
   const [kontaktData, setKontaktData] = useState<Kontakttype | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const scrollbarWidthRef = useRef(0);
+  const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,40 +51,80 @@ const Navigation = () => {
     scrollbarWidthRef.current = windowWidth - documentWidth;
   }, []);
 
-  // Control body scroll when menu opens/closes
+  // Control body scroll when menu opens/closes (compute scrollbar width at toggle time)
   useEffect(() => {
-    if (menuOpen) {
-      // Save current scroll position
+    const applyLock = () => {
+      // compute scrollbar width dynamically
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       const scrollY = window.scrollY;
 
-      // Disable scrolling when menu is open and compensate for scrollbar width
+      // Lock scrolling and compensate for scrollbar disappearance
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = "100%";
-      document.body.style.paddingRight = `${scrollbarWidthRef.current}px`;
-    } else {
-      // Re-enable scrolling when menu is closed
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+      // also apply to root so that fixed/inset elements don't shift
+      document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
+
+      // copy nav background into root element so the padding area matches the menu
+      try {
+        const navBg = navRef.current
+          ? window.getComputedStyle(navRef.current).backgroundColor
+          : "";
+        if (navBg) document.documentElement.style.backgroundColor = navBg;
+      } catch {
+        // ignore if access denied or navRef not available
+      }
+    };
+
+    const removeLock = () => {
       const scrollY = document.body.style.top;
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.paddingRight = "";
+      document.documentElement.style.paddingRight = "";
+      // restore root background
+      document.documentElement.style.backgroundColor = "";
 
       // Restore scroll position
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
-    }
+    };
 
-    // Cleanup function
+    if (menuOpen) applyLock();
+    else removeLock();
+
     return () => {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.paddingRight = "";
+      removeLock();
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    if (!navRef.current) return;
+
+    const updatePadding = () => {
+      if (!navRef.current) return;
+      const navHeight = navRef.current.getBoundingClientRect().height;
+      document.documentElement.style.setProperty(
+        "--nav-height",
+        `${navHeight}px`
+      );
+    };
+
+    // Initial calculation
+    updatePadding();
+
+    // Recalculate on resize
+    window.addEventListener("resize", updatePadding);
+
+    return () => {
+      window.removeEventListener("resize", updatePadding);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -94,7 +135,10 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="relative bg-como-800 text-como-300 2xl:mx-64">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 w-full bg-como-800 text-como-300 z-[2000]"
+    >
       {/* Fixed Navigation Bar that always stays visible */}
       <div className="flex items-center justify-between p-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 relative z-30">
         {/*LOGO*/}
@@ -124,9 +168,7 @@ const Navigation = () => {
               <Link
                 key={index}
                 href={`/${page.slug.current}`}
-                className={`md:text-base md:tracking-wide md:font-bold ${
-                  pathname === `/${page.slug.current}` ? "active" : ""
-                }`}
+                className={pathname === `/${page.slug.current}` ? "active" : ""}
                 onClick={closeMenu}
               >
                 {page.menu}
@@ -135,7 +177,7 @@ const Navigation = () => {
           </div>
           {/*MENU ICON - only visible on mobile*/}
           <div
-            className="block flex md:hidden focus:outline-none cursor-pointer"
+            className="flex md:hidden focus:outline-none cursor-pointer"
             onClick={toggleMenu}
           >
             {menuOpen ? (

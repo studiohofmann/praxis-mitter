@@ -36,8 +36,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const data = await getData();
 
   // Extract description from portable text (with 160 char limit)
-  const fullText = data?.willkommenText
-    ? extractTextFromPortableText(data.willkommenText)
+  const fullText = data?.einleitungText
+    ? extractTextFromPortableText(data.einleitungText)
     : "";
   const description =
     fullText.substring(0, 160) + (fullText.length > 160 ? "..." : "");
@@ -97,27 +97,28 @@ export default async function Home() {
           <div className="absolute inset-0 bg-darkSlateGray opacity-30" />
         </div>
       </div>
-      {/*WILLKOMMEN*/}
+      {/*EINLEITUNG*/}
       <div className="section">
-        <PortableText value={data.willkommenText || []} />
+        <h2>{data.einleitungUeberschrift}</h2>
+        <PortableText value={data.einleitungText || []} />
       </div>
       {/*LEISTUNGEN*/}
-      <div className="section bg-sundance-300 flex flex-col gap-8">
-        <div>
-          <PortableText
-            value={data.leistungenText || []}
-            components={{
-              list: {
-                bullet: ({ children }) => (
-                  <div className="list-disc">{children}</div>
-                ),
-              },
-              listItem: {
-                bullet: ({ children }) => <li>{children}</li>,
-              },
-            }}
-          />
-        </div>
+      <div className="section bg-sundance-300">
+        <h2>{data.leistungenUeberschrift}</h2>
+
+        <PortableText
+          value={data.leistungenText || []}
+          components={{
+            list: {
+              bullet: ({ children }) => (
+                <ul className="list-disc pl-5">{children}</ul>
+              ),
+            },
+            listItem: {
+              bullet: ({ children }) => <li>{children}</li>,
+            },
+          }}
+        />
       </div>
     </div>
   );

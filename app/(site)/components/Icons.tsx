@@ -22,16 +22,28 @@ async function Icons() {
   if (!data) return null;
 
   return (
-    <div className="flex gap-8 justify-center">
+    <div className="flex flex-col gap-2 items-start">
       {data.email && (
-        <a href={`mailto:${data.email}`} aria-label="Email">
+        <a
+          href={`mailto:${data.email}`}
+          aria-label="Email"
+          className="inline-flex items-center gap-2"
+        >
           <MailFilled className="icon" />
+          <div>-</div>
+          <div>Email</div>
         </a>
       )}
 
       {data.telefonnummer && (
-        <a href={`tel:${data.telefonnummer}`} aria-label="Telefon">
+        <a
+          href={`tel:${data.telefonnummer}`}
+          aria-label="Telefon"
+          className="inline-flex items-center gap-2"
+        >
           <PhoneFilled className="icon" />
+          <div>-</div>
+          <div>Telefon</div>
         </a>
       )}
       {data.telefonnummer && (
@@ -45,8 +57,11 @@ async function Icons() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
+          className="inline-flex items-center gap-2"
         >
           <WhatsAppOutlined className="icon" />
+          <div>-</div>
+          <div>WhatsApp</div>
         </a>
       )}
 
@@ -56,8 +71,11 @@ async function Icons() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
+          className="inline-flex items-center gap-2"
         >
           <InstagramFilled className="icon" />
+          <div>-</div>
+          <div>Instagram</div>
         </a>
       )}
     </div>

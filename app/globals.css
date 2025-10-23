@@ -4,34 +4,44 @@
 
 /*FONTS*/
 @font-face {
-  font-family: "SourceSans3";
-  src: url("/fonts/SourceSans3-VariableFont_wght.ttf") format("woff2");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
 }
 @font-face {
-  font-family: "SourceSans3";
-  src: url("/fonts/SourceSans3-Italic-VariableFont_wght.ttf") format("woff2");
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2");
   font-weight: 100 900;
   font-style: italic;
 }
 
 h2 {
-  @apply text-4xl font-bold;
+  @apply text-xl font-bold tracking-wide;
+}
+h3 {
+  @apply text-sm font-semibold tracking-wide;
 }
 
 /*GENERAL*/
 body {
   @apply bg-stone-200;
-  @apply font-sourceSans3 text-como-800 text-xl font-normal;
+  @apply font-switzer text-como-800 text-lg;
+  padding-top: var(--nav-height);
 }
 a {
-  @apply text-como-300 hover:text-como-200;
+  @apply text-como-300 !text-base hover:text-como-200;
   @apply transition-all duration-200 ease-in-out;
 }
+
+.blueLinks a {
+  @apply text-nevada-500 !text-base hover:text-nevada-400;
+  @apply transition-all duration-200 ease-in-out;
+}
+
 /* Add this for active links */
 a.active {
-  @apply text-como-200 font-bold;
+  @apply text-como-200;
   @apply relative;
 }
 
@@ -39,21 +49,22 @@ button {
   @apply px-4 py-2;
   @apply bg-como-300 hover:bg-como-200;
   @apply transition-all duration-200 ease-in-out;
-  @apply text-como-800  font-bold tracking-wide;
+  @apply text-como-800 text-base;
 }
 a.active button {
   @apply bg-como-200;
 }
 .icon {
-  @apply text-2xl;
+  @apply text-xl;
 }
 .section {
-  @apply px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64 py-16;
+  @apply px-4 py-8 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64;
+  @apply flex flex-col gap-4;
 }
 .footersection {
-  @apply px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64 pt-16 pb-4;
+  @apply px-4 pt-16 pb-4 md:px-8 lg:px-16 xl:px-32 2xl:px-8 2xl:mx-64;
   @apply bg-como-800;
-  @apply text-como-300 text-base tracking-wide;
+  @apply text-como-300 text-sm font-light;
 }
 
 /*CONTACTFORM*/
@@ -71,6 +82,20 @@ textarea {
   @apply bg-como-200 text-como-800;
   @apply rounded-none !important; /* Remove rounded corners */
   @apply focus:outline-none focus:ring-0 !important; /* Remove blue focus outline */
+}
+.formfield {
+  @apply -mb-2;
+}
+
+/* Reserve space for the scrollbar to avoid layout shift when it's hidden */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Fallback: if browser doesn't support scrollbar-gutter, the JS compensation will apply padding-right */
+
+strong {
+  @apply font-semibold;
 }
 
 /*REZEPT*/

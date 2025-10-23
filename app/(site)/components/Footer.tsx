@@ -22,31 +22,25 @@ export default async function Footer() {
   if (!data) return null;
 
   return (
-    <div className="footersection flex flex-col gap-8 md:gap-16">
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16">
+    <div className="footersection flex flex-col gap-16">
+      <div className="flex flex-col gap-8">
         {/*TERMIN*/}
         <div className="flex flex-col gap-4">
-          <div className="text-center">
-            <PortableText value={data.terminText || []} />
-          </div>
-
+          <h3>{data.terminUeberschrift}</h3>
+          <PortableText value={data.terminText || []} />
           {/*CONTACT ICONS*/}
           <Icons />
         </div>
 
-        <hr className="border-t border-como-300 md:hidden" />
-
         {/*ANERKENNUNG*/}
         <div className="flex flex-col gap-4">
-          <div className="text-center">
-            <PortableText value={data.anerkennungText || []} />
-          </div>
-          <div className="flex justify-center gap-8">
+          <h3>{data.anerkennungUeberschrift}</h3>
+          <PortableText value={data.anerkennungText || []} />
+          <div className="flex gap-4">
             <a
               href="https://emr.ch/home"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full"
             >
               <Emr width="100%" height="36" fill="currentColor" />
             </a>
@@ -54,35 +48,33 @@ export default async function Footer() {
               href="https://nvs.swiss/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full"
             >
               <Nvs width="100%" height="36" fill="currentColor" />
             </a>
           </div>
         </div>
 
-        <hr className="border-t border-como-300 md:hidden" />
-
         {/*MENU*/}
-        <div className="text-center">
-          <b>Menü</b>
+        <div className="flex flex-col gap-4">
+          <h3>Menü</h3>
           <Menu />
         </div>
 
-        <hr className="border-t border-como-300 md:hidden" />
-
         {/*ANSCHRIFT*/}
-        <a
-          href="https://www.openstreetmap.org/way/227581772"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-center"
-        >
-          <PortableText value={data.adresse || []} />
-        </a>
+        <div className="flex flex-col gap-4">
+          <h3>{data.adresseUeberschrift}</h3>
+          <a
+            href="https://www.openstreetmap.org/way/227581772"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="!text-sm"
+          >
+            <PortableText value={data.adresse || []} />
+          </a>
+        </div>
       </div>
       {/*COPYRIGHT*/}
-      <div className="flex justify-center">
+      <div className="flex">
         {new Date().getFullYear()}
         &nbsp;
         <div>
