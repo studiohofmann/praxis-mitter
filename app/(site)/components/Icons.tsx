@@ -9,7 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { KONTAKT_QUERY } from "@/sanity/lib/queries";
 import { Kontakt as Kontakttype } from "@/sanity.types";
 
-async function Icons() {
+async function Icons({ className }: { className?: string }) {
   let data: Kontakttype | null = null;
   try {
     const result = await client.fetch<Kontakttype[]>(KONTAKT_QUERY);
@@ -22,26 +22,25 @@ async function Icons() {
   if (!data) return null;
 
   return (
-    <div className="flex flex-col gap-2 items-start">
+    <div className="flex flex-col gap-2 items-start!">
       {data.email && (
         <a
           href={`mailto:${data.email}`}
           aria-label="Email"
-          className="inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 !text-sm"
         >
-          <MailFilled className="icon" />
+          <MailFilled className={`icon ${className}`} />
           <div>-</div>
           <div>Email</div>
         </a>
       )}
-
       {data.telefonnummer && (
         <a
           href={`tel:${data.telefonnummer}`}
           aria-label="Telefon"
-          className="inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 !text-sm"
         >
-          <PhoneFilled className="icon" />
+          <PhoneFilled className={`icon ${className}`} />
           <div>-</div>
           <div>Telefon</div>
         </a>
@@ -57,23 +56,22 @@ async function Icons() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
-          className="inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 !text-sm"
         >
-          <WhatsAppOutlined className="icon" />
+          <WhatsAppOutlined className={`icon ${className}`} />
           <div>-</div>
           <div>WhatsApp</div>
         </a>
       )}
-
       {data.instagram && (
         <a
           href={`https://instagram.com/${data.instagram.replace("@", "")}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
-          className="inline-flex items-center gap-2"
+          className="inline-flex items-center gap-2 !text-sm"
         >
-          <InstagramFilled className="icon" />
+          <InstagramFilled className={`icon ${className}`} />
           <div>-</div>
           <div>Instagram</div>
         </a>

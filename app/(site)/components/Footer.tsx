@@ -29,14 +29,14 @@ export default async function Footer() {
           <h3>{data.terminUeberschrift}</h3>
           <PortableText value={data.terminText || []} />
           {/*CONTACT ICONS*/}
-          <Icons />
+          <Icons className="!text-base" />
         </div>
 
         {/*ANERKENNUNG*/}
         <div className="flex flex-col gap-4">
           <h3>{data.anerkennungUeberschrift}</h3>
           <PortableText value={data.anerkennungText || []} />
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-4 items-start">
             <a
               href="https://emr.ch/home"
               target="_blank"

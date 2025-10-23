@@ -35,7 +35,7 @@ a {
 }
 
 .blueLinks a {
-  @apply text-nevada-500 !text-base hover:text-nevada-400;
+  @apply text-nevada-500 !text-lg hover:text-nevada-400;
   @apply transition-all duration-200 ease-in-out;
 }
 
