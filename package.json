@@ -14,12 +14,12 @@
   "dependencies": {
     "@ant-design/icons": "^5.6.1",
     "@formspree/react": "^2.5.3",
-    "@sanity/cli": "^4.11.0",
+    "@sanity/cli": "^4.20.3",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^4.11.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
-    "next": "^15.5.6",
+    "next": "^15.5.7",
     "next-sanity": "^11.5.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -41,5 +41,8 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
+  },
+  "overrides": {
+    "glob": "11.1.0"
   }
 }
